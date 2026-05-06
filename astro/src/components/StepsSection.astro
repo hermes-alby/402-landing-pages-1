@@ -2,28 +2,29 @@
 import type { UseCaseFrontmatter } from "../types";
 
 interface Props {
-  data: UseCaseFrontmatter["steps"];
+  data: UseCaseFrontmatter["flow"];
 }
 
 const { data } = Astro.props;
 ---
 
-<section class="section section--dark" aria-labelledby={data.titleId}>
-  <div class="section__header">
-    <span class="section__eyebrow">{data.eyebrow}</span>
-    <h2 id={data.titleId}>{data.title}</h2>
-    <p>{data.text}</p>
-  </div>
+<section class="section section--flow" id="flow" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="sec-head sec-head--center">
+      <span class="eyebrow eyebrow--center">{data.eyebrow}</span>
+      <h2 class="sec-title">
+        {data.title.text}<em>{data.title.highlight}</em>
+      </h2>
+    </div>
 
-  <ol class="steps">
-    {
-      data.items.map((item) => (
-        <li>
-          <span>{item.number}</span>
-          <h3>{item.title}</h3>
-          <p>{item.text}</p>
-        </li>
-      ))
-    }
-  </ol>
+    <div class="flow-steps">
+      {data.steps.map((step) => (
+        <div class="flow-step">
+          <div class="num">{step.number}</div>
+          <h4>{step.title}</h4>
+          <p>{step.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
 </section>

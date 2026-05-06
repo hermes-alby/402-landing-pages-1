@@ -8,7 +8,6 @@ function objectAt(value: unknown, path: string): Record<string, unknown> {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
     fail(path, "object");
   }
-
   return value as Record<string, unknown>;
 }
 
@@ -16,29 +15,28 @@ function stringAt(value: unknown, path: string): string {
   if (typeof value !== "string" || value.length === 0) {
     fail(path, "non-empty string");
   }
-
   return value;
 }
 
 function optionalStringAt(value: unknown, path: string): string | undefined {
-  if (value === undefined) return undefined;
+  if (value === undefined || value === null) return undefined;
   return stringAt(value, path);
 }
 
 function booleanAt(value: unknown, path: string): boolean | undefined {
   if (value === undefined) return undefined;
-  if (typeof value !== "boolean") {
-    fail(path, "boolean");
-  }
+  if (typeof value !== "boolean") fail(path, "boolean");
+  return value;
+}
 
+function numberAt(value: unknown, path: string): number | undefined {
+  if (value === undefined) return undefined;
+  if (typeof value !== "number") fail(path, "number");
   return value;
 }
 
 function arrayAt(value: unknown, path: string): unknown[] {
-  if (!Array.isArray(value)) {
-    fail(path, "array");
-  }
-
+  if (!Array.isArray(value)) fail(path, "array");
   return value;
 }
 
@@ -46,97 +44,27 @@ function stringArrayAt(value: unknown, path: string): string[] {
   return arrayAt(value, path).map((item, index) => stringAt(item, `${path}[${index}]`));
 }
 
-function namedTextArrayAt(value: unknown, path: string) {
-  return arrayAt(value, path).map((item, index) => {
-    const entry = objectAt(item, `${path}[${index}]`);
-    return {
-      title: stringAt(entry.title, `${path}[${index}].title`),
-      text: stringAt(entry.text, `${path}[${index}].text`)
-    };
-  });
-}
-
-function metricArrayAt(value: unknown, path: string) {
-  return arrayAt(value, path).map((item, index) => {
-    const entry = objectAt(item, `${path}[${index}]`);
-    return {
-      label: stringAt(entry.label, `${path}[${index}].label`),
-      value: stringAt(entry.value, `${path}[${index}].value`),
-      text: stringAt(entry.text, `${path}[${index}].text`),
-      large: booleanAt(entry.large, `${path}[${index}].large`)
-    };
-  });
-}
-
-function stepArrayAt(value: unknown, path: string) {
-  return arrayAt(value, path).map((item, index) => {
-    const entry = objectAt(item, `${path}[${index}]`);
-    return {
-      number: stringAt(entry.number, `${path}[${index}].number`),
-      title: stringAt(entry.title, `${path}[${index}].title`),
-      text: stringAt(entry.text, `${path}[${index}].text`)
-    };
-  });
-}
-
-function factArrayAt(value: unknown, path: string) {
-  return arrayAt(value, path).map((item, index) => {
-    const entry = objectAt(item, `${path}[${index}]`);
-    return {
-      label: stringAt(entry.label, `${path}[${index}].label`),
-      value: stringAt(entry.value, `${path}[${index}].value`)
-    };
-  });
-}
-
-function comparisonArrayAt(value: unknown, path: string) {
-  return arrayAt(value, path).map((item, index) => {
-    const entry = objectAt(item, `${path}[${index}]`);
-    return {
-      category: stringAt(entry.category, `${path}[${index}].category`),
-      left: stringAt(entry.left, `${path}[${index}].left`),
-      right: stringAt(entry.right, `${path}[${index}].right`)
-    };
-  });
-}
-
-function faqArrayAt(value: unknown, path: string) {
-  return arrayAt(value, path).map((item, index) => {
-    const entry = objectAt(item, `${path}[${index}]`);
-    return {
-      question: stringAt(entry.question, `${path}[${index}].question`),
-      answer: stringAt(entry.answer, `${path}[${index}].answer`),
-      open: booleanAt(entry.open, `${path}[${index}].open`)
-    };
-  });
-}
-
-function footerLinksAt(value: unknown, path: string) {
-  return arrayAt(value, path).map((item, index) => {
-    const entry = objectAt(item, `${path}[${index}]`);
-    return {
-      label: stringAt(entry.label, `${path}[${index}].label`),
-      href: stringAt(entry.href, `${path}[${index}].href`)
-    };
-  });
-}
-
 export function validateUseCaseFrontmatter(value: unknown, source = "unknown"): UseCaseFrontmatter {
   const root = objectAt(value, source);
+
   const schema = objectAt(root.schema, `${source}.schema`);
   const hero = objectAt(root.hero, `${source}.hero`);
   const heroTitle = objectAt(hero.title, `${source}.hero.title`);
-  const heroPreview = objectAt(hero.preview, `${source}.hero.preview`);
-  const heroBackdrop = hero.backdrop === undefined ? undefined : objectAt(hero.backdrop, `${source}.hero.backdrop`);
-  const intro = objectAt(root.intro, `${source}.intro`);
-  const results = objectAt(root.results, `${source}.results`);
-  const steps = objectAt(root.steps, `${source}.steps`);
+  const profile = objectAt(hero.profile, `${source}.hero.profile`);
+  const trust = objectAt(root.trust, `${source}.trust`);
+  const pipeline = objectAt(root.pipeline, `${source}.pipeline`);
+  const pipelineTitle = objectAt(pipeline.title, `${source}.pipeline.title`);
   const benefits = objectAt(root.benefits, `${source}.benefits`);
+  const useCases = objectAt(root.useCases, `${source}.useCases`);
+  const useCasesTitle = objectAt(useCases.title, `${source}.useCases.title`);
+  const comparison = objectAt(root.comparison, `${source}.comparison`);
+  const comparisonColumns = objectAt(comparison.columns, `${source}.comparison.columns`);
+  const flow = objectAt(root.flow, `${source}.flow`);
+  const flowTitle = objectAt(flow.title, `${source}.flow.title`);
   const facts = objectAt(root.facts, `${source}.facts`);
   const prompt = objectAt(root.prompt, `${source}.prompt`);
-  const comparison = objectAt(root.comparison, `${source}.comparison`);
-  const useCases = objectAt(root.useCases, `${source}.useCases`);
-  const closing = objectAt(root.closing, `${source}.closing`);
+  const cta = objectAt(root.cta, `${source}.cta`);
+  const ctaTitle = objectAt(cta.title, `${source}.cta.title`);
   const faq = objectAt(root.faq, `${source}.faq`);
   const footer = objectAt(root.footer, `${source}.footer`);
 
@@ -155,21 +83,10 @@ export function validateUseCaseFrontmatter(value: unknown, source = "unknown"): 
       providerName: stringAt(schema.providerName, `${source}.schema.providerName`)
     },
     hero: {
-      backdrop: heroBackdrop
-        ? {
-            label: stringAt(heroBackdrop.label, `${source}.hero.backdrop.label`),
-            right: optionalStringAt(heroBackdrop.right, `${source}.hero.backdrop.right`),
-            color: optionalStringAt(heroBackdrop.color, `${source}.hero.backdrop.color`),
-            letterSpacing: optionalStringAt(heroBackdrop.letterSpacing, `${source}.hero.backdrop.letterSpacing`)
-          }
-        : undefined,
-      brandKicker: stringAt(hero.brandKicker, `${source}.hero.brandKicker`),
-      brandName: stringAt(hero.brandName, `${source}.hero.brandName`),
-      topLinkText: stringAt(hero.topLinkText, `${source}.hero.topLinkText`),
-      topLinkHref: stringAt(hero.topLinkHref, `${source}.hero.topLinkHref`),
-      integration: stringArrayAt(hero.integration, `${source}.hero.integration`),
+      ghostNumber: stringAt(hero.ghostNumber, `${source}.hero.ghostNumber`),
+      eyebrow: stringAt(hero.eyebrow, `${source}.hero.eyebrow`),
       title: {
-        text: stringAt(heroTitle.text, `${source}.hero.title.text`),
+        lines: stringArrayAt(heroTitle.lines, `${source}.hero.title.lines`),
         highlight: stringAt(heroTitle.highlight, `${source}.hero.title.highlight`)
       },
       lead: stringAt(hero.lead, `${source}.hero.lead`),
@@ -179,50 +96,155 @@ export function validateUseCaseFrontmatter(value: unknown, source = "unknown"): 
           label: stringAt(entry.label, `${source}.hero.actions[${index}].label`),
           text: stringAt(entry.text, `${source}.hero.actions[${index}].text`),
           href: stringAt(entry.href, `${source}.hero.actions[${index}].href`),
-          primary: booleanAt(entry.primary, `${source}.hero.actions[${index}].primary`)
+          primary: booleanAt(entry.primary, `${source}.hero.actions[${index}].primary`),
+          monoTag: optionalStringAt(entry.monoTag, `${source}.hero.actions[${index}].monoTag`)
         };
       }),
-      trust: stringArrayAt(hero.trust, `${source}.hero.trust`),
-      preview: {
-        ariaLabel: stringAt(heroPreview.ariaLabel, `${source}.hero.preview.ariaLabel`),
-        request: stringAt(heroPreview.request, `${source}.hero.preview.request`),
-        responseAriaLabel: stringAt(heroPreview.responseAriaLabel, `${source}.hero.preview.responseAriaLabel`),
-        resultLabel: stringAt(heroPreview.resultLabel, `${source}.hero.preview.resultLabel`),
-        resultTitle: stringAt(heroPreview.resultTitle, `${source}.hero.preview.resultTitle`),
-        code: stringAt(heroPreview.code, `${source}.hero.preview.code`)
-      }
+      meta: stringArrayAt(hero.meta, `${source}.hero.meta`),
+      promptLabel: stringAt(hero.promptLabel, `${source}.hero.promptLabel`),
+      promptText: stringAt(hero.promptText, `${source}.hero.promptText`),
+      profile: {
+        initials: stringAt(profile.initials, `${source}.hero.profile.initials`),
+        brand: stringAt(profile.brand, `${source}.hero.profile.brand`),
+        brandSuffix: stringAt(profile.brandSuffix, `${source}.hero.profile.brandSuffix`),
+        status: stringAt(profile.status, `${source}.hero.profile.status`),
+        name: stringAt(profile.name, `${source}.hero.profile.name`),
+        role: stringAt(profile.role, `${source}.hero.profile.role`),
+        meta: stringAt(profile.meta, `${source}.hero.profile.meta`),
+        rows: arrayAt(profile.rows, `${source}.hero.profile.rows`).map((item, index) => {
+          const entry = objectAt(item, `${source}.hero.profile.rows[${index}]`);
+          return {
+            label: stringAt(entry.label, `${source}.hero.profile.rows[${index}].label`),
+            value: stringAt(entry.value, `${source}.hero.profile.rows[${index}].value`),
+            verified: booleanAt(entry.verified, `${source}.hero.profile.rows[${index}].verified`)
+          };
+        }),
+        tags: stringArrayAt(profile.tags, `${source}.hero.profile.tags`),
+        footLeft: stringAt(profile.footLeft, `${source}.hero.profile.footLeft`),
+        footRight: stringAt(profile.footRight, `${source}.hero.profile.footRight`)
+      },
+      resultLabel: stringAt(hero.resultLabel, `${source}.hero.resultLabel`),
+      resultMeta: stringAt(hero.resultMeta, `${source}.hero.resultMeta`)
     },
-    intro: {
-      eyebrow: stringAt(intro.eyebrow, `${source}.intro.eyebrow`),
-      title: stringAt(intro.title, `${source}.intro.title`),
-      text: stringAt(intro.text, `${source}.intro.text`),
-      ariaLabel: stringAt(intro.ariaLabel, `${source}.intro.ariaLabel`),
-      features: namedTextArrayAt(intro.features, `${source}.intro.features`)
+    trust: {
+      items: arrayAt(trust.items, `${source}.trust.items`).map((item, index) => {
+        const entry = objectAt(item, `${source}.trust.items[${index}]`);
+        const rawStat = entry.stat;
+        if (rawStat !== undefined && rawStat !== null && typeof rawStat !== "string") {
+          fail(`${source}.trust.items[${index}].stat`, "string");
+        }
+        return {
+          label: stringAt(entry.label, `${source}.trust.items[${index}].label`),
+          stat: typeof rawStat === "string" ? rawStat : "",
+          statHighlight: stringAt(entry.statHighlight, `${source}.trust.items[${index}].statHighlight`),
+          statSuffix: optionalStringAt(entry.statSuffix, `${source}.trust.items[${index}].statSuffix`),
+          desc: stringAt(entry.desc, `${source}.trust.items[${index}].desc`)
+        };
+      })
     },
-    results: {
-      eyebrow: stringAt(results.eyebrow, `${source}.results.eyebrow`),
-      title: stringAt(results.title, `${source}.results.title`),
-      text: stringAt(results.text, `${source}.results.text`),
-      metrics: metricArrayAt(results.metrics, `${source}.results.metrics`)
-    },
-    steps: {
-      titleId: stringAt(steps.titleId, `${source}.steps.titleId`),
-      eyebrow: stringAt(steps.eyebrow, `${source}.steps.eyebrow`),
-      title: stringAt(steps.title, `${source}.steps.title`),
-      text: stringAt(steps.text, `${source}.steps.text`),
-      items: stepArrayAt(steps.items, `${source}.steps.items`)
+    pipeline: {
+      eyebrow: stringAt(pipeline.eyebrow, `${source}.pipeline.eyebrow`),
+      title: {
+        text: stringAt(pipelineTitle.text, `${source}.pipeline.title.text`),
+        highlight: stringAt(pipelineTitle.highlight, `${source}.pipeline.title.highlight`)
+      },
+      description: stringAt(pipeline.description, `${source}.pipeline.description`),
+      stages: arrayAt(pipeline.stages, `${source}.pipeline.stages`).map((item, index) => {
+        const entry = objectAt(item, `${source}.pipeline.stages[${index}]`);
+        return {
+          ix: stringAt(entry.ix, `${source}.pipeline.stages[${index}].ix`),
+          title: stringAt(entry.title, `${source}.pipeline.stages[${index}].title`),
+          text: stringAt(entry.text, `${source}.pipeline.stages[${index}].text`)
+        };
+      }),
+      foot: arrayAt(pipeline.foot, `${source}.pipeline.foot`).map((item, index) => {
+        const entry = objectAt(item, `${source}.pipeline.foot[${index}]`);
+        return {
+          label: stringAt(entry.label, `${source}.pipeline.foot[${index}].label`),
+          html: stringAt(entry.html, `${source}.pipeline.foot[${index}].html`)
+        };
+      })
     },
     benefits: {
       eyebrow: stringAt(benefits.eyebrow, `${source}.benefits.eyebrow`),
       title: stringAt(benefits.title, `${source}.benefits.title`),
-      items: namedTextArrayAt(benefits.items, `${source}.benefits.items`)
+      description: stringAt(benefits.description, `${source}.benefits.description`),
+      cards: arrayAt(benefits.cards, `${source}.benefits.cards`).map((item, index) => {
+        const entry = objectAt(item, `${source}.benefits.cards[${index}]`);
+        const span = numberAt(entry.span, `${source}.benefits.cards[${index}].span`);
+        return {
+          num: stringAt(entry.num, `${source}.benefits.cards[${index}].num`),
+          title: stringAt(entry.title, `${source}.benefits.cards[${index}].title`),
+          highlight: optionalStringAt(entry.highlight, `${source}.benefits.cards[${index}].highlight`),
+          text: stringAt(entry.text, `${source}.benefits.cards[${index}].text`),
+          span: span === 2 || span === 3 ? span : undefined,
+          feature: booleanAt(entry.feature, `${source}.benefits.cards[${index}].feature`),
+          demo: optionalStringAt(entry.demo, `${source}.benefits.cards[${index}].demo`)
+        };
+      })
+    },
+    useCases: {
+      eyebrow: stringAt(useCases.eyebrow, `${source}.useCases.eyebrow`),
+      title: {
+        text: stringAt(useCasesTitle.text, `${source}.useCases.title.text`),
+        highlight: stringAt(useCasesTitle.highlight, `${source}.useCases.title.highlight`)
+      },
+      description: stringAt(useCases.description, `${source}.useCases.description`),
+      items: arrayAt(useCases.items, `${source}.useCases.items`).map((item, index) => {
+        const entry = objectAt(item, `${source}.useCases.items[${index}]`);
+        return {
+          who: stringAt(entry.who, `${source}.useCases.items[${index}].who`),
+          title: stringAt(entry.title, `${source}.useCases.items[${index}].title`),
+          text: stringAt(entry.text, `${source}.useCases.items[${index}].text`),
+          query: stringAt(entry.query, `${source}.useCases.items[${index}].query`)
+        };
+      })
+    },
+    comparison: {
+      eyebrow: stringAt(comparison.eyebrow, `${source}.comparison.eyebrow`),
+      title: stringAt(comparison.title, `${source}.comparison.title`),
+      description: stringAt(comparison.description, `${source}.comparison.description`),
+      columns: {
+        us: stringAt(comparisonColumns.us, `${source}.comparison.columns.us`),
+        a: stringAt(comparisonColumns.a, `${source}.comparison.columns.a`),
+        b: stringAt(comparisonColumns.b, `${source}.comparison.columns.b`)
+      },
+      rows: arrayAt(comparison.rows, `${source}.comparison.rows`).map((item, index) => {
+        const entry = objectAt(item, `${source}.comparison.rows[${index}]`);
+        return {
+          category: stringAt(entry.category, `${source}.comparison.rows[${index}].category`),
+          us: stringAt(entry.us, `${source}.comparison.rows[${index}].us`),
+          left: stringAt(entry.left, `${source}.comparison.rows[${index}].left`),
+          right: stringAt(entry.right, `${source}.comparison.rows[${index}].right`)
+        };
+      })
+    },
+    flow: {
+      eyebrow: stringAt(flow.eyebrow, `${source}.flow.eyebrow`),
+      title: {
+        text: stringAt(flowTitle.text, `${source}.flow.title.text`),
+        highlight: stringAt(flowTitle.highlight, `${source}.flow.title.highlight`)
+      },
+      steps: arrayAt(flow.steps, `${source}.flow.steps`).map((item, index) => {
+        const entry = objectAt(item, `${source}.flow.steps[${index}]`);
+        return {
+          number: stringAt(entry.number, `${source}.flow.steps[${index}].number`),
+          title: stringAt(entry.title, `${source}.flow.steps[${index}].title`),
+          text: stringAt(entry.text, `${source}.flow.steps[${index}].text`)
+        };
+      })
     },
     facts: {
       eyebrow: stringAt(facts.eyebrow, `${source}.facts.eyebrow`),
       title: stringAt(facts.title, `${source}.facts.title`),
       text: stringAt(facts.text, `${source}.facts.text`),
-      ariaLabel: stringAt(facts.ariaLabel, `${source}.facts.ariaLabel`),
-      items: factArrayAt(facts.items, `${source}.facts.items`)
+      items: arrayAt(facts.items, `${source}.facts.items`).map((item, index) => {
+        const entry = objectAt(item, `${source}.facts.items[${index}]`);
+        return {
+          label: stringAt(entry.label, `${source}.facts.items[${index}].label`),
+          value: stringAt(entry.value, `${source}.facts.items[${index}].value`)
+        };
+      })
     },
     prompt: {
       eyebrow: stringAt(prompt.eyebrow, `${source}.prompt.eyebrow`),
@@ -232,33 +254,42 @@ export function validateUseCaseFrontmatter(value: unknown, source = "unknown"): 
       buttonLabel: stringAt(prompt.buttonLabel, `${source}.prompt.buttonLabel`),
       code: stringAt(prompt.code, `${source}.prompt.code`)
     },
-    comparison: {
-      eyebrow: stringAt(comparison.eyebrow, `${source}.comparison.eyebrow`),
-      title: stringAt(comparison.title, `${source}.comparison.title`),
-      ariaLabel: stringAt(comparison.ariaLabel, `${source}.comparison.ariaLabel`),
-      leftHeader: stringAt(comparison.leftHeader, `${source}.comparison.leftHeader`),
-      rightHeader: stringAt(comparison.rightHeader, `${source}.comparison.rightHeader`),
-      rows: comparisonArrayAt(comparison.rows, `${source}.comparison.rows`)
-    },
-    useCases: {
-      eyebrow: stringAt(useCases.eyebrow, `${source}.useCases.eyebrow`),
-      title: stringAt(useCases.title, `${source}.useCases.title`),
-      items: namedTextArrayAt(useCases.items, `${source}.useCases.items`)
-    },
-    closing: {
-      eyebrow: stringAt(closing.eyebrow, `${source}.closing.eyebrow`),
-      title: stringAt(closing.title, `${source}.closing.title`),
-      text: stringAt(closing.text, `${source}.closing.text`),
-      items: stringArrayAt(closing.items, `${source}.closing.items`)
+    cta: {
+      eyebrow: stringAt(cta.eyebrow, `${source}.cta.eyebrow`),
+      title: {
+        text: stringAt(ctaTitle.text, `${source}.cta.title.text`),
+        highlight: stringAt(ctaTitle.highlight, `${source}.cta.title.highlight`)
+      },
+      text: stringAt(cta.text, `${source}.cta.text`),
+      actions: arrayAt(cta.actions, `${source}.cta.actions`).map((item, index) => {
+        const entry = objectAt(item, `${source}.cta.actions[${index}]`);
+        return {
+          label: stringAt(entry.label, `${source}.cta.actions[${index}].label`),
+          text: stringAt(entry.text, `${source}.cta.actions[${index}].text`),
+          href: stringAt(entry.href, `${source}.cta.actions[${index}].href`),
+          primary: booleanAt(entry.primary, `${source}.cta.actions[${index}].primary`),
+          monoTag: optionalStringAt(entry.monoTag, `${source}.cta.actions[${index}].monoTag`)
+        };
+      }),
+      badges: stringArrayAt(cta.badges, `${source}.cta.badges`)
     },
     faq: {
       eyebrow: stringAt(faq.eyebrow, `${source}.faq.eyebrow`),
       title: stringAt(faq.title, `${source}.faq.title`),
-      items: faqArrayAt(faq.items, `${source}.faq.items`)
+      description: stringAt(faq.description, `${source}.faq.description`),
+      items: arrayAt(faq.items, `${source}.faq.items`).map((item, index) => {
+        const entry = objectAt(item, `${source}.faq.items[${index}]`);
+        return {
+          question: stringAt(entry.question, `${source}.faq.items[${index}].question`),
+          answer: stringAt(entry.answer, `${source}.faq.items[${index}].answer`),
+          open: booleanAt(entry.open, `${source}.faq.items[${index}].open`)
+        };
+      })
     },
     footer: {
       brand: stringAt(footer.brand, `${source}.footer.brand`),
-      links: footerLinksAt(footer.links, `${source}.footer.links`)
+      suffix: stringAt(footer.suffix, `${source}.footer.suffix`),
+      tag: stringAt(footer.tag, `${source}.footer.tag`)
     }
   };
 }

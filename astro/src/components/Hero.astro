@@ -6,65 +6,94 @@ interface Props {
 }
 
 const { data } = Astro.props;
-const backdropStyle = data.backdrop
-  ? [
-      `--hero-backdrop-label: "${data.backdrop.label}"`,
-      data.backdrop.right ? `--hero-backdrop-right: ${data.backdrop.right}` : "",
-      data.backdrop.color ? `--hero-backdrop-color: ${data.backdrop.color}` : "",
-      data.backdrop.letterSpacing ? `--hero-backdrop-letter-spacing: ${data.backdrop.letterSpacing}` : ""
-    ]
-      .filter(Boolean)
-      .join(";")
-  : undefined;
 ---
 
-<section class="hero" aria-labelledby="hero-title" style={backdropStyle}>
-  <div class="hero__topbar" aria-label="Page identity">
-    <a class="brand" href="#hero-title" aria-label={`${data.brandKicker} ${data.brandName}`}>
-      <span>{data.brandKicker}</span>
-      <span>{data.brandName}</span>
-    </a>
-    <a class="top-link" href={data.topLinkHref}>{data.topLinkText}</a>
-  </div>
-
-  <div class="hero__content">
-    <div class="integration-pill reveal reveal--1" aria-label="Integration">
-      {data.integration.map((item) => <span>{item}</span>)}
-    </div>
-
-    <h1 class="reveal reveal--2" id="hero-title">
-      {data.title.text}<span>{data.title.highlight}</span>
-    </h1>
-    <p class="hero__lead reveal reveal--3">{data.lead}</p>
-
-    <div class="hero__actions reveal reveal--4" aria-label="Primary actions">
-      {
-        data.actions.map((action) => (
-          <a class:list={["action-card", { "action-card--primary": action.primary }]} href={action.href}>
-            <span class="action-card__label">{action.label}</span>
-            <span class="action-card__text">{action.text}</span>
-          </a>
-        ))
-      }
-    </div>
-
-    <ul class="trust-row reveal reveal--5" aria-label="Service highlights">
-      {data.trust.map((item) => <li>{item}</li>)}
-    </ul>
-
-    <div class="hero-preview hero-preview--data reveal reveal--6" aria-label={data.preview.ariaLabel}>
-      <div class="prompt-card">
-        <span class="mini-label">Request</span>
-        <p>{data.preview.request}</p>
-      </div>
-      <div class="flow-line" aria-hidden="true"><span></span></div>
-      <div class="response-card" aria-label={data.preview.responseAriaLabel}>
-        <div class="response-card__topline">
-          <span>{data.preview.resultLabel}</span>
-          <strong>{data.preview.resultTitle}</strong>
+<header class="hero">
+  <div class="wrap">
+    <div class="ghost-number" aria-hidden="true">{data.ghostNumber}</div>
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">{data.eyebrow}</span>
+        <h1 class="display">
+          {data.title.lines.map((line, i) => (
+            <>
+              {line}
+              {i < data.title.lines.length - 1 && <br />}
+            </>
+          ))}
+          <em>{data.title.highlight}</em>
+        </h1>
+        <p class="hero-sub">{data.lead}</p>
+        <div class="hero-cta">
+          {data.actions.map((action) => (
+            <a class:list={["btn", "btn-lg", action.primary ? "btn-primary" : "btn-ghost"]} href={action.href}>
+              {action.monoTag && <span class="mono-tag">{action.monoTag}</span>}
+              {action.text}
+            </a>
+          ))}
         </div>
-        <pre><code>{data.preview.code}</code></pre>
+        <ul class="hero-meta">
+          {data.meta.map((item) => (
+            <li>
+              <span class="tick">✓</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="result-stage">
+        <div class="prompt-bubble">
+          <span class="lbl">{data.promptLabel}</span>
+          {data.promptText}
+          <span class="stem"></span>
+        </div>
+
+        <div class="result-card">
+          <div class="rc-head">
+            <div class="rc-brand">
+              <div class="rc-brand-dot">{data.profile.brand.charAt(0).toUpperCase()}</div>
+              <span>{data.profile.brand} <em>/ {data.profile.brandSuffix}</em></span>
+            </div>
+            <div class="rc-status">{data.profile.status}</div>
+          </div>
+
+          <div class="rc-profile">
+            <div class="rc-avatar" data-initials={data.profile.initials}></div>
+            <div>
+              <div class="rc-name">{data.profile.name}</div>
+              <div class="rc-role">{data.profile.role}</div>
+              <div class="rc-loc">{data.profile.meta}</div>
+            </div>
+          </div>
+
+          <div class="rc-data">
+            {data.profile.rows.map((row) => (
+              <div class="rc-row">
+                <span class="k">{row.label}</span>
+                <span class="v">
+                  {row.value}
+                  {row.verified && <span class="verified">✓ verified</span>}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <div class="rc-tags">
+            {data.profile.tags.map((tag) => <span class="rc-tag">{tag}</span>)}
+          </div>
+
+          <div class="rc-foot">
+            <span>{data.profile.footLeft}</span>
+            <span class="price">{data.profile.footRight}</span>
+          </div>
+        </div>
+
+        <div class="result-label">
+          <span>{data.resultLabel}</span>
+          <span>{data.resultMeta}</span>
+        </div>
       </div>
     </div>
   </div>
-</section>
+</header>

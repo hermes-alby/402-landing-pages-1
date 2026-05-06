@@ -45,15 +45,15 @@ const jsonLd = {
 >
   <main>
     <Hero data={frontmatter.hero} />
-    <IntroSplit data={frontmatter.intro} />
-    <MetricsSection data={frontmatter.results} />
-    <StepsSection data={frontmatter.steps} />
-    <UseGridSection data={frontmatter.benefits} labelledBy="benefits-title" />
+    <MetricsSection data={frontmatter.trust} />
+    <IntroSplit data={frontmatter.pipeline} />
+    <UseGridSection data={frontmatter.benefits} variant="benefits" />
+    <UseGridSection data={frontmatter.useCases} variant="useCases" />
+    <ComparisonTable data={frontmatter.comparison} />
+    <StepsSection data={frontmatter.flow} />
     <FactsPanel data={frontmatter.facts} />
     <CopyablePrompt data={frontmatter.prompt} />
-    <ComparisonTable data={frontmatter.comparison} />
-    <UseGridSection data={frontmatter.useCases} id="use-cases" className="section--use" labelledBy="use-title" />
-    <ClosingSection data={frontmatter.closing} />
+    <ClosingSection data={frontmatter.cta} />
     <FaqSection data={frontmatter.faq} />
   </main>
   <Footer data={frontmatter.footer} />

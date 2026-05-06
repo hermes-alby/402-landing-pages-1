@@ -8,19 +8,26 @@ interface Props {
 const { data } = Astro.props;
 ---
 
-<section class="section section--faq" id="faq" aria-labelledby="faq-title">
-  <div class="section__header">
-    <span class="section__eyebrow">{data.eyebrow}</span>
-    <h2 id="faq-title">{data.title}</h2>
-  </div>
-  <div class="faq-list">
-    {
-      data.items.map((item) => (
-        <details open={item.open}>
-          <summary>{item.question}</summary>
+<section class="section" id="faq" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">{data.eyebrow}</span>
+        <h2 class="sec-title">{data.title}</h2>
+      </div>
+      <p class="sec-desc">{data.description}</p>
+    </div>
+
+    <div class="faq-list">
+      {data.items.map((item) => (
+        <details class="faq-item" open={item.open}>
+          <summary>
+            <h4>{item.question}</h4>
+            <div class="ic">+</div>
+          </summary>
           <p>{item.answer}</p>
         </details>
-      ))
-    }
+      ))}
+    </div>
   </div>
 </section>

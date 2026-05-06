@@ -8,31 +8,31 @@ interface Props {
 const { data } = Astro.props;
 ---
 
-<section class="section" aria-labelledby="comparison-title">
-  <div class="section__header">
-    <span class="section__eyebrow">{data.eyebrow}</span>
-    <h2 id="comparison-title">{data.title}</h2>
-  </div>
-  <div class="comparison-card" role="region" aria-label={data.ariaLabel}>
-    <table>
-      <thead>
-        <tr>
-          <th>Category</th>
-          <th>{data.leftHeader}</th>
-          <th>{data.rightHeader}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {
-          data.rows.map((row) => (
-            <tr>
-              <th>{row.category}</th>
-              <td data-label={data.leftHeader}>{row.left}</td>
-              <td data-label={data.rightHeader}>{row.right}</td>
-            </tr>
-          ))
-        }
-      </tbody>
-    </table>
+<section class="section" id="compare" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">{data.eyebrow}</span>
+        <h2 class="sec-title" set:html={data.title}></h2>
+      </div>
+      <p class="sec-desc">{data.description}</p>
+    </div>
+
+    <div class="compare">
+      <div class="compare-row head">
+        <div></div>
+        <div class="us">{data.columns.us}</div>
+        <div>{data.columns.a}</div>
+        <div>{data.columns.b}</div>
+      </div>
+      {data.rows.map((row) => (
+        <div class="compare-row">
+          <div class="label">{row.category}</div>
+          <div class="us"><span class="cell">{row.us}</span></div>
+          <div><span class="cell">{row.left}</span></div>
+          <div><span class="cell">{row.right}</span></div>
+        </div>
+      ))}
+    </div>
   </div>
 </section>

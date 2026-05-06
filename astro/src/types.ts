@@ -3,6 +3,7 @@ export interface ActionCard {
   text: string;
   href: string;
   primary?: boolean;
+  monoTag?: string;
 }
 
 export interface NamedText {
@@ -30,6 +31,7 @@ export interface FactItem {
 
 export interface ComparisonRow {
   category: string;
+  us: string;
   left: string;
   right: string;
 }
@@ -43,6 +45,43 @@ export interface FaqItem {
 export interface FooterLink {
   label: string;
   href: string;
+}
+
+export interface ProfileDataRow {
+  label: string;
+  value: string;
+  verified?: boolean;
+}
+
+export interface ResultProfile {
+  initials: string;
+  brand: string;
+  brandSuffix: string;
+  status: string;
+  name: string;
+  role: string;
+  meta: string;
+  rows: ProfileDataRow[];
+  tags: string[];
+  footLeft: string;
+  footRight: string;
+}
+
+export interface BenefitCard {
+  num: string;
+  title: string;
+  highlight?: string;
+  text: string;
+  span?: 2 | 3;
+  feature?: boolean;
+  demo?: string;
+}
+
+export interface UseCaseCard {
+  who: string;
+  title: string;
+  text: string;
+  query: string;
 }
 
 export interface UseCaseFrontmatter {
@@ -60,63 +99,85 @@ export interface UseCaseFrontmatter {
     providerName: string;
   };
   hero: {
-    backdrop?: {
-      label: string;
-      right?: string;
-      color?: string;
-      letterSpacing?: string;
-    };
-    brandKicker: string;
-    brandName: string;
-    topLinkText: string;
-    topLinkHref: string;
-    integration: string[];
+    ghostNumber: string;
+    eyebrow: string;
     title: {
-      text: string;
+      lines: string[];
       highlight: string;
     };
     lead: string;
     actions: ActionCard[];
-    trust: string[];
-    preview: {
-      ariaLabel: string;
-      request: string;
-      responseAriaLabel: string;
-      resultLabel: string;
-      resultTitle: string;
-      code: string;
+    meta: string[];
+    promptLabel: string;
+    promptText: string;
+    profile: ResultProfile;
+    resultLabel: string;
+    resultMeta: string;
+  };
+  trust: {
+    items: Array<{
+      label: string;
+      stat: string;
+      statHighlight: string;
+      statSuffix?: string;
+      desc: string;
+    }>;
+  };
+  pipeline: {
+    eyebrow: string;
+    title: {
+      text: string;
+      highlight: string;
     };
-  };
-  intro: {
-    eyebrow: string;
-    title: string;
-    text: string;
-    ariaLabel: string;
-    features: NamedText[];
-  };
-  results: {
-    eyebrow: string;
-    title: string;
-    text: string;
-    metrics: MetricCard[];
-  };
-  steps: {
-    titleId: string;
-    eyebrow: string;
-    title: string;
-    text: string;
-    items: StepItem[];
+    description: string;
+    stages: Array<{
+      ix: string;
+      title: string;
+      text: string;
+    }>;
+    foot: Array<{
+      label: string;
+      html: string;
+    }>;
   };
   benefits: {
     eyebrow: string;
     title: string;
-    items: NamedText[];
+    description: string;
+    cards: BenefitCard[];
+  };
+  useCases: {
+    eyebrow: string;
+    title: {
+      text: string;
+      highlight: string;
+    };
+    description: string;
+    items: UseCaseCard[];
+  };
+  comparison: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    columns: {
+      us: string;
+      a: string;
+      b: string;
+    };
+    rows: ComparisonRow[];
+  };
+  flow: {
+    eyebrow: string;
+    title: {
+      text: string;
+      highlight: string;
+    };
+    steps: StepItem[];
   };
   facts: {
     eyebrow: string;
     title: string;
     text: string;
-    ariaLabel: string;
     items: FactItem[];
   };
   prompt: {
@@ -127,32 +188,25 @@ export interface UseCaseFrontmatter {
     buttonLabel: string;
     code: string;
   };
-  comparison: {
+  cta: {
     eyebrow: string;
-    title: string;
-    ariaLabel: string;
-    leftHeader: string;
-    rightHeader: string;
-    rows: ComparisonRow[];
-  };
-  useCases: {
-    eyebrow: string;
-    title: string;
-    items: NamedText[];
-  };
-  closing: {
-    eyebrow: string;
-    title: string;
+    title: {
+      text: string;
+      highlight: string;
+    };
     text: string;
-    items: string[];
+    actions: ActionCard[];
+    badges: string[];
   };
   faq: {
     eyebrow: string;
     title: string;
+    description: string;
     items: FaqItem[];
   };
   footer: {
     brand: string;
-    links: FooterLink[];
+    suffix: string;
+    tag: string;
   };
 }

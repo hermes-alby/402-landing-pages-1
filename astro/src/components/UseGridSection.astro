@@ -1,34 +1,73 @@
 ---
-import type { NamedText } from "../types";
+import type { UseCaseFrontmatter } from "../types";
 
 interface Props {
-  data: {
-    eyebrow: string;
-    title: string;
-    items: NamedText[];
-  };
-  id?: string;
-  className?: string;
-  labelledBy: string;
+  data: UseCaseFrontmatter["benefits"] | UseCaseFrontmatter["useCases"];
+  variant: "benefits" | "useCases";
 }
 
-const { data, id, className = "", labelledBy } = Astro.props;
-const sectionClass = ["section", className].filter(Boolean).join(" ");
+const { data, variant } = Astro.props;
 ---
 
-<section class={sectionClass} id={id} aria-labelledby={labelledBy}>
-  <div class="section__header">
-    <span class="section__eyebrow">{data.eyebrow}</span>
-    <h2 id={labelledBy}>{data.title}</h2>
-  </div>
-  <div class="use-grid">
-    {
-      data.items.map((item) => (
-        <article>
-          <h3>{item.title}</h3>
-          <p>{item.text}</p>
-        </article>
-      ))
-    }
-  </div>
-</section>
+{variant === "benefits" && (
+  <section class="section" id="benefits" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">{(data as UseCaseFrontmatter["benefits"]).eyebrow}</span>
+          <h2 class="sec-title">{(data as UseCaseFrontmatter["benefits"]).title}</h2>
+        </div>
+        <p class="sec-desc">{(data as UseCaseFrontmatter["benefits"]).description}</p>
+      </div>
+
+      <div class="benefits-grid">
+        {(data as UseCaseFrontmatter["benefits"]).cards.map((card) => (
+          <div class:list={[
+            "b-card",
+            card.span === 3 && "span-3",
+            card.span === 2 && "span-2",
+            card.feature && "feature"
+          ]}>
+            <div>
+              <span class="num">{card.num}</span>
+              <h3>
+                {card.title}
+                {card.highlight && <em> {card.highlight}</em>}
+              </h3>
+            </div>
+            <p>{card.text}</p>
+            {card.demo && <pre class="demo-card" set:html={card.demo}></pre>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+{variant === "useCases" && (
+  <section class="section" id="use-cases" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">{(data as UseCaseFrontmatter["useCases"]).eyebrow}</span>
+          <h2 class="sec-title">
+            {(data as UseCaseFrontmatter["useCases"]).title.text}
+            <em>{(data as UseCaseFrontmatter["useCases"]).title.highlight}</em>
+          </h2>
+        </div>
+        <p class="sec-desc">{(data as UseCaseFrontmatter["useCases"]).description}</p>
+      </div>
+
+      <div class="uc-grid">
+        {(data as UseCaseFrontmatter["useCases"]).items.map((item) => (
+          <div class="uc-card">
+            <span class="who">{item.who}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <div class="uc-query">{item.query}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
