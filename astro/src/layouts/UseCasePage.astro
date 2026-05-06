@@ -1,15 +1,10 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import ClosingSection from "../components/ClosingSection.astro";
-import ComparisonTable from "../components/ComparisonTable.astro";
-import CopyablePrompt from "../components/CopyablePrompt.astro";
-import FactsPanel from "../components/FactsPanel.astro";
 import FaqSection from "../components/FaqSection.astro";
 import Footer from "../components/Footer.astro";
 import Hero from "../components/Hero.astro";
-import IntroSplit from "../components/IntroSplit.astro";
 import MetricsSection from "../components/MetricsSection.astro";
-import StepsSection from "../components/StepsSection.astro";
 import UseGridSection from "../components/UseGridSection.astro";
 import { validateUseCaseFrontmatter } from "../lib/validateUseCaseFrontmatter";
 
@@ -46,13 +41,7 @@ const jsonLd = {
   <main>
     <Hero data={frontmatter.hero} />
     <MetricsSection data={frontmatter.trust} />
-    <IntroSplit data={frontmatter.pipeline} />
-    <UseGridSection data={frontmatter.benefits} variant="benefits" />
     <UseGridSection data={frontmatter.useCases} variant="useCases" />
-    <ComparisonTable data={frontmatter.comparison} />
-    <StepsSection data={frontmatter.flow} />
-    <FactsPanel data={frontmatter.facts} />
-    <CopyablePrompt data={frontmatter.prompt} />
     <ClosingSection data={frontmatter.cta} />
     <FaqSection data={frontmatter.faq} />
   </main>

@@ -50,19 +50,21 @@ export function validateUseCaseFrontmatter(value: unknown, source = "unknown"): 
   const schema = objectAt(root.schema, `${source}.schema`);
   const hero = objectAt(root.hero, `${source}.hero`);
   const heroTitle = objectAt(hero.title, `${source}.hero.title`);
-  const profile = objectAt(hero.profile, `${source}.hero.profile`);
+  const connection = objectAt(hero.connection, `${source}.hero.connection`);
+  const connectionAgent = objectAt(connection.agent, `${source}.hero.connection.agent`);
+  const connectionService = objectAt(connection.service, `${source}.hero.connection.service`);
   const trust = objectAt(root.trust, `${source}.trust`);
-  const pipeline = objectAt(root.pipeline, `${source}.pipeline`);
-  const pipelineTitle = objectAt(pipeline.title, `${source}.pipeline.title`);
-  const benefits = objectAt(root.benefits, `${source}.benefits`);
+  const pipeline = root.pipeline === undefined ? undefined : objectAt(root.pipeline, `${source}.pipeline`);
+  const pipelineTitle = pipeline ? objectAt(pipeline.title, `${source}.pipeline.title`) : undefined;
+  const benefits = root.benefits === undefined ? undefined : objectAt(root.benefits, `${source}.benefits`);
   const useCases = objectAt(root.useCases, `${source}.useCases`);
   const useCasesTitle = objectAt(useCases.title, `${source}.useCases.title`);
-  const comparison = objectAt(root.comparison, `${source}.comparison`);
-  const comparisonColumns = objectAt(comparison.columns, `${source}.comparison.columns`);
-  const flow = objectAt(root.flow, `${source}.flow`);
-  const flowTitle = objectAt(flow.title, `${source}.flow.title`);
-  const facts = objectAt(root.facts, `${source}.facts`);
-  const prompt = objectAt(root.prompt, `${source}.prompt`);
+  const comparison = root.comparison === undefined ? undefined : objectAt(root.comparison, `${source}.comparison`);
+  const comparisonColumns = comparison ? objectAt(comparison.columns, `${source}.comparison.columns`) : undefined;
+  const flow = root.flow === undefined ? undefined : objectAt(root.flow, `${source}.flow`);
+  const flowTitle = flow ? objectAt(flow.title, `${source}.flow.title`) : undefined;
+  const facts = root.facts === undefined ? undefined : objectAt(root.facts, `${source}.facts`);
+  const prompt = root.prompt === undefined ? undefined : objectAt(root.prompt, `${source}.prompt`);
   const cta = objectAt(root.cta, `${source}.cta`);
   const ctaTitle = objectAt(cta.title, `${source}.cta.title`);
   const faq = objectAt(root.faq, `${source}.faq`);
@@ -90,41 +92,19 @@ export function validateUseCaseFrontmatter(value: unknown, source = "unknown"): 
         highlight: stringAt(heroTitle.highlight, `${source}.hero.title.highlight`)
       },
       lead: stringAt(hero.lead, `${source}.hero.lead`),
-      actions: arrayAt(hero.actions, `${source}.hero.actions`).map((item, index) => {
-        const entry = objectAt(item, `${source}.hero.actions[${index}]`);
-        return {
-          label: stringAt(entry.label, `${source}.hero.actions[${index}].label`),
-          text: stringAt(entry.text, `${source}.hero.actions[${index}].text`),
-          href: stringAt(entry.href, `${source}.hero.actions[${index}].href`),
-          primary: booleanAt(entry.primary, `${source}.hero.actions[${index}].primary`),
-          monoTag: optionalStringAt(entry.monoTag, `${source}.hero.actions[${index}].monoTag`)
-        };
-      }),
       meta: stringArrayAt(hero.meta, `${source}.hero.meta`),
-      promptLabel: stringAt(hero.promptLabel, `${source}.hero.promptLabel`),
-      promptText: stringAt(hero.promptText, `${source}.hero.promptText`),
-      profile: {
-        initials: stringAt(profile.initials, `${source}.hero.profile.initials`),
-        brand: stringAt(profile.brand, `${source}.hero.profile.brand`),
-        brandSuffix: stringAt(profile.brandSuffix, `${source}.hero.profile.brandSuffix`),
-        status: stringAt(profile.status, `${source}.hero.profile.status`),
-        name: stringAt(profile.name, `${source}.hero.profile.name`),
-        role: stringAt(profile.role, `${source}.hero.profile.role`),
-        meta: stringAt(profile.meta, `${source}.hero.profile.meta`),
-        rows: arrayAt(profile.rows, `${source}.hero.profile.rows`).map((item, index) => {
-          const entry = objectAt(item, `${source}.hero.profile.rows[${index}]`);
-          return {
-            label: stringAt(entry.label, `${source}.hero.profile.rows[${index}].label`),
-            value: stringAt(entry.value, `${source}.hero.profile.rows[${index}].value`),
-            verified: booleanAt(entry.verified, `${source}.hero.profile.rows[${index}].verified`)
-          };
-        }),
-        tags: stringArrayAt(profile.tags, `${source}.hero.profile.tags`),
-        footLeft: stringAt(profile.footLeft, `${source}.hero.profile.footLeft`),
-        footRight: stringAt(profile.footRight, `${source}.hero.profile.footRight`)
-      },
-      resultLabel: stringAt(hero.resultLabel, `${source}.hero.resultLabel`),
-      resultMeta: stringAt(hero.resultMeta, `${source}.hero.resultMeta`)
+      connection: {
+        agent: {
+          eyebrow: stringAt(connectionAgent.eyebrow, `${source}.hero.connection.agent.eyebrow`),
+          logo: stringAt(connectionAgent.logo, `${source}.hero.connection.agent.logo`),
+          title: stringAt(connectionAgent.title, `${source}.hero.connection.agent.title`)
+        },
+        service: {
+          eyebrow: stringAt(connectionService.eyebrow, `${source}.hero.connection.service.eyebrow`),
+          logo: stringAt(connectionService.logo, `${source}.hero.connection.service.logo`),
+          title: stringAt(connectionService.title, `${source}.hero.connection.service.title`)
+        }
+      }
     },
     trust: {
       items: arrayAt(trust.items, `${source}.trust.items`).map((item, index) => {
@@ -142,7 +122,7 @@ export function validateUseCaseFrontmatter(value: unknown, source = "unknown"): 
         };
       })
     },
-    pipeline: {
+    pipeline: pipeline && pipelineTitle ? {
       eyebrow: stringAt(pipeline.eyebrow, `${source}.pipeline.eyebrow`),
       title: {
         text: stringAt(pipelineTitle.text, `${source}.pipeline.title.text`),
@@ -164,8 +144,8 @@ export function validateUseCaseFrontmatter(value: unknown, source = "unknown"): 
           html: stringAt(entry.html, `${source}.pipeline.foot[${index}].html`)
         };
       })
-    },
-    benefits: {
+    } : undefined,
+    benefits: benefits ? {
       eyebrow: stringAt(benefits.eyebrow, `${source}.benefits.eyebrow`),
       title: stringAt(benefits.title, `${source}.benefits.title`),
       description: stringAt(benefits.description, `${source}.benefits.description`),
@@ -182,7 +162,7 @@ export function validateUseCaseFrontmatter(value: unknown, source = "unknown"): 
           demo: optionalStringAt(entry.demo, `${source}.benefits.cards[${index}].demo`)
         };
       })
-    },
+    } : undefined,
     useCases: {
       eyebrow: stringAt(useCases.eyebrow, `${source}.useCases.eyebrow`),
       title: {
@@ -200,7 +180,7 @@ export function validateUseCaseFrontmatter(value: unknown, source = "unknown"): 
         };
       })
     },
-    comparison: {
+    comparison: comparison && comparisonColumns ? {
       eyebrow: stringAt(comparison.eyebrow, `${source}.comparison.eyebrow`),
       title: stringAt(comparison.title, `${source}.comparison.title`),
       description: stringAt(comparison.description, `${source}.comparison.description`),
@@ -218,8 +198,8 @@ export function validateUseCaseFrontmatter(value: unknown, source = "unknown"): 
           right: stringAt(entry.right, `${source}.comparison.rows[${index}].right`)
         };
       })
-    },
-    flow: {
+    } : undefined,
+    flow: flow && flowTitle ? {
       eyebrow: stringAt(flow.eyebrow, `${source}.flow.eyebrow`),
       title: {
         text: stringAt(flowTitle.text, `${source}.flow.title.text`),
@@ -233,8 +213,8 @@ export function validateUseCaseFrontmatter(value: unknown, source = "unknown"): 
           text: stringAt(entry.text, `${source}.flow.steps[${index}].text`)
         };
       })
-    },
-    facts: {
+    } : undefined,
+    facts: facts ? {
       eyebrow: stringAt(facts.eyebrow, `${source}.facts.eyebrow`),
       title: stringAt(facts.title, `${source}.facts.title`),
       text: stringAt(facts.text, `${source}.facts.text`),
@@ -245,15 +225,15 @@ export function validateUseCaseFrontmatter(value: unknown, source = "unknown"): 
           value: stringAt(entry.value, `${source}.facts.items[${index}].value`)
         };
       })
-    },
-    prompt: {
+    } : undefined,
+    prompt: prompt ? {
       eyebrow: stringAt(prompt.eyebrow, `${source}.prompt.eyebrow`),
       title: stringAt(prompt.title, `${source}.prompt.title`),
       text: stringAt(prompt.text, `${source}.prompt.text`),
       copyTarget: stringAt(prompt.copyTarget, `${source}.prompt.copyTarget`),
       buttonLabel: stringAt(prompt.buttonLabel, `${source}.prompt.buttonLabel`),
       code: stringAt(prompt.code, `${source}.prompt.code`)
-    },
+    } : undefined,
     cta: {
       eyebrow: stringAt(cta.eyebrow, `${source}.cta.eyebrow`),
       title: {

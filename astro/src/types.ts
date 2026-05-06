@@ -47,24 +47,15 @@ export interface FooterLink {
   href: string;
 }
 
-export interface ProfileDataRow {
-  label: string;
-  value: string;
-  verified?: boolean;
+export interface ConnectionNode {
+  eyebrow: string;
+  logo: string;
+  title: string;
 }
 
-export interface ResultProfile {
-  initials: string;
-  brand: string;
-  brandSuffix: string;
-  status: string;
-  name: string;
-  role: string;
-  meta: string;
-  rows: ProfileDataRow[];
-  tags: string[];
-  footLeft: string;
-  footRight: string;
+export interface HeroConnection {
+  agent: ConnectionNode;
+  service: ConnectionNode;
 }
 
 export interface BenefitCard {
@@ -106,13 +97,8 @@ export interface UseCaseFrontmatter {
       highlight: string;
     };
     lead: string;
-    actions: ActionCard[];
     meta: string[];
-    promptLabel: string;
-    promptText: string;
-    profile: ResultProfile;
-    resultLabel: string;
-    resultMeta: string;
+    connection: HeroConnection;
   };
   trust: {
     items: Array<{
@@ -123,7 +109,7 @@ export interface UseCaseFrontmatter {
       desc: string;
     }>;
   };
-  pipeline: {
+  pipeline?: {
     eyebrow: string;
     title: {
       text: string;
@@ -140,7 +126,7 @@ export interface UseCaseFrontmatter {
       html: string;
     }>;
   };
-  benefits: {
+  benefits?: {
     eyebrow: string;
     title: string;
     description: string;
@@ -155,7 +141,7 @@ export interface UseCaseFrontmatter {
     description: string;
     items: UseCaseCard[];
   };
-  comparison: {
+  comparison?: {
     eyebrow: string;
     title: string;
     description: string;
@@ -166,7 +152,7 @@ export interface UseCaseFrontmatter {
     };
     rows: ComparisonRow[];
   };
-  flow: {
+  flow?: {
     eyebrow: string;
     title: {
       text: string;
@@ -174,13 +160,13 @@ export interface UseCaseFrontmatter {
     };
     steps: StepItem[];
   };
-  facts: {
+  facts?: {
     eyebrow: string;
     title: string;
     text: string;
     items: FactItem[];
   };
-  prompt: {
+  prompt?: {
     eyebrow: string;
     title: string;
     text: string;
