@@ -6,10 +6,9 @@ interface Props {
 }
 
 const { data } = Astro.props;
-const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-const resolveLogo = (logo: string) => (logo.startsWith("/") ? `${base}${logo}` : logo);
-const agentLogoSrc = data.connection.agent.logo.startsWith("/") ? resolveLogo(data.connection.agent.logo) : null;
-const serviceLogoSrc = data.connection.service.logo.startsWith("/") ? resolveLogo(data.connection.service.logo) : null;
+const toRelative = (logo: string) => (logo.startsWith("/") ? logo.slice(1) : logo);
+const agentLogoSrc = data.connection.agent.logo.startsWith("/") ? toRelative(data.connection.agent.logo) : null;
+const serviceLogoSrc = data.connection.service.logo.startsWith("/") ? toRelative(data.connection.service.logo) : null;
 ---
 
 <header class="hero">

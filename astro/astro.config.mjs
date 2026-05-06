@@ -3,8 +3,6 @@ import beautifier from "astro-html-beautifier";
 import viteConfig, { allowedHosts } from "./vite.config.js";
 
 export default defineConfig({
-  site: "https://getalby.github.io",
-  base: "/402-landing-pages",
   compressHTML: false,
   integrations: [
     beautifier({
