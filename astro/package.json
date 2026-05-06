@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev --host 0.0.0.0 --port ${PORT:-4324}",
     "preview": "astro preview --host 0.0.0.0 --port ${PREVIEW_PORT:-4325}",
-    "build": "astro build && node scripts/relative_paths.mjs",
+    "build": "astro build && node scripts/relative_paths.mjs && node scripts/sitemap.mjs",
     "check": "astro check",
     "check:fields": "node scripts/check_fields.js"
   },
