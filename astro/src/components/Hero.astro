@@ -6,6 +6,10 @@ interface Props {
 }
 
 const { data } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const resolveLogo = (logo: string) => (logo.startsWith("/") ? `${base}${logo}` : logo);
+const agentLogoSrc = data.connection.agent.logo.startsWith("/") ? resolveLogo(data.connection.agent.logo) : null;
+const serviceLogoSrc = data.connection.service.logo.startsWith("/") ? resolveLogo(data.connection.service.logo) : null;
 ---
 
 <header class="hero">
@@ -42,13 +46,21 @@ const { data } = Astro.props;
 
         <div class="node-card node-agent">
           <span class="node-eyebrow">{data.connection.agent.eyebrow}</span>
-          <div class="node-logo">{data.connection.agent.logo}</div>
+          <div class="node-logo">
+            {agentLogoSrc
+              ? <img src={agentLogoSrc} alt={data.connection.agent.title} />
+              : data.connection.agent.logo}
+          </div>
           <div class="node-title">{data.connection.agent.title}</div>
         </div>
 
         <div class="node-card node-service">
           <span class="node-eyebrow">{data.connection.service.eyebrow}</span>
-          <div class="node-logo">{data.connection.service.logo}</div>
+          <div class="node-logo">
+            {serviceLogoSrc
+              ? <img src={serviceLogoSrc} alt={data.connection.service.title} />
+              : data.connection.service.logo}
+          </div>
           <div class="node-title">{data.connection.service.title}</div>
         </div>
       </div>
