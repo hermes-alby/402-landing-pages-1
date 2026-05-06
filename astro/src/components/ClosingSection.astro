@@ -2,21 +2,34 @@
 import type { UseCaseFrontmatter } from "../types";
 
 interface Props {
-  data: UseCaseFrontmatter["closing"];
+  data: UseCaseFrontmatter["cta"];
 }
 
 const { data } = Astro.props;
 ---
 
-<section class="section section--pricing" aria-labelledby="closing-title">
-  <div class="pricing-card">
-    <div>
-      <span class="section__eyebrow">{data.eyebrow}</span>
-      <h2 id="closing-title">{data.title}</h2>
+<section class="section" id="start" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="cta-wrap">
+      <span class="eyebrow">{data.eyebrow}</span>
+      <h2>
+        {data.title.text}<em>{data.title.highlight}</em>
+      </h2>
       <p>{data.text}</p>
+
+      <div class="cta-row">
+        {data.actions.map((action) => (
+          <a class:list={["btn", "btn-lg", action.primary ? "btn-primary" : "btn-ghost"]} href={action.href}>
+            {action.text}
+          </a>
+        ))}
+      </div>
+
+      {data.badges.length > 0 && (
+        <ul class="cta-list">
+          {data.badges.map((badge) => <li>{badge}</li>)}
+        </ul>
+      )}
     </div>
-    <ul class="pricing-list">
-      {data.items.map((item) => <li>{item}</li>)}
-    </ul>
   </div>
 </section>

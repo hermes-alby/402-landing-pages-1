@@ -1,15 +1,10 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import ClosingSection from "../components/ClosingSection.astro";
-import ComparisonTable from "../components/ComparisonTable.astro";
-import CopyablePrompt from "../components/CopyablePrompt.astro";
-import FactsPanel from "../components/FactsPanel.astro";
 import FaqSection from "../components/FaqSection.astro";
 import Footer from "../components/Footer.astro";
 import Hero from "../components/Hero.astro";
-import IntroSplit from "../components/IntroSplit.astro";
 import MetricsSection from "../components/MetricsSection.astro";
-import StepsSection from "../components/StepsSection.astro";
 import UseGridSection from "../components/UseGridSection.astro";
 import { validateUseCaseFrontmatter } from "../lib/validateUseCaseFrontmatter";
 
@@ -45,15 +40,9 @@ const jsonLd = {
 >
   <main>
     <Hero data={frontmatter.hero} />
-    <IntroSplit data={frontmatter.intro} />
-    <MetricsSection data={frontmatter.results} />
-    <StepsSection data={frontmatter.steps} />
-    <UseGridSection data={frontmatter.benefits} labelledBy="benefits-title" />
-    <FactsPanel data={frontmatter.facts} />
-    <CopyablePrompt data={frontmatter.prompt} />
-    <ComparisonTable data={frontmatter.comparison} />
-    <UseGridSection data={frontmatter.useCases} id="use-cases" className="section--use" labelledBy="use-title" />
-    <ClosingSection data={frontmatter.closing} />
+    <MetricsSection data={frontmatter.trust} />
+    <UseGridSection data={frontmatter.useCases} variant="useCases" />
+    <ClosingSection data={frontmatter.cta} />
     <FaqSection data={frontmatter.faq} />
   </main>
   <Footer data={frontmatter.footer} />

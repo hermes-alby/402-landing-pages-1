@@ -6,65 +6,64 @@ interface Props {
 }
 
 const { data } = Astro.props;
-const backdropStyle = data.backdrop
-  ? [
-      `--hero-backdrop-label: "${data.backdrop.label}"`,
-      data.backdrop.right ? `--hero-backdrop-right: ${data.backdrop.right}` : "",
-      data.backdrop.color ? `--hero-backdrop-color: ${data.backdrop.color}` : "",
-      data.backdrop.letterSpacing ? `--hero-backdrop-letter-spacing: ${data.backdrop.letterSpacing}` : ""
-    ]
-      .filter(Boolean)
-      .join(";")
-  : undefined;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const resolveLogo = (logo: string) => (logo.startsWith("/") ? `${base}${logo}` : logo);
+const agentLogoSrc = data.connection.agent.logo.startsWith("/") ? resolveLogo(data.connection.agent.logo) : null;
+const serviceLogoSrc = data.connection.service.logo.startsWith("/") ? resolveLogo(data.connection.service.logo) : null;
 ---
 
-<section class="hero" aria-labelledby="hero-title" style={backdropStyle}>
-  <div class="hero__topbar" aria-label="Page identity">
-    <a class="brand" href="#hero-title" aria-label={`${data.brandKicker} ${data.brandName}`}>
-      <span>{data.brandKicker}</span>
-      <span>{data.brandName}</span>
-    </a>
-    <a class="top-link" href={data.topLinkHref}>{data.topLinkText}</a>
-  </div>
-
-  <div class="hero__content">
-    <div class="integration-pill reveal reveal--1" aria-label="Integration">
-      {data.integration.map((item) => <span>{item}</span>)}
-    </div>
-
-    <h1 class="reveal reveal--2" id="hero-title">
-      {data.title.text}<span>{data.title.highlight}</span>
-    </h1>
-    <p class="hero__lead reveal reveal--3">{data.lead}</p>
-
-    <div class="hero__actions reveal reveal--4" aria-label="Primary actions">
-      {
-        data.actions.map((action) => (
-          <a class:list={["action-card", { "action-card--primary": action.primary }]} href={action.href}>
-            <span class="action-card__label">{action.label}</span>
-            <span class="action-card__text">{action.text}</span>
-          </a>
-        ))
-      }
-    </div>
-
-    <ul class="trust-row reveal reveal--5" aria-label="Service highlights">
-      {data.trust.map((item) => <li>{item}</li>)}
-    </ul>
-
-    <div class="hero-preview hero-preview--data reveal reveal--6" aria-label={data.preview.ariaLabel}>
-      <div class="prompt-card">
-        <span class="mini-label">Request</span>
-        <p>{data.preview.request}</p>
+<header class="hero">
+  <div class="wrap">
+    <div class="ghost-number" aria-hidden="true">{data.ghostNumber}</div>
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">{data.eyebrow}</span>
+        <h1 class="display">
+          {data.title.lines.map((line, i) => (
+            <>
+              {line}
+              {i < data.title.lines.length - 1 && <br />}
+            </>
+          ))}
+          <em>{data.title.highlight}</em>
+        </h1>
+        <p class="hero-sub">{data.lead}</p>
+        <ul class="hero-meta">
+          {data.meta.map((item) => (
+            <li>
+              <span class="tick">✓</span>
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
-      <div class="flow-line" aria-hidden="true"><span></span></div>
-      <div class="response-card" aria-label={data.preview.responseAriaLabel}>
-        <div class="response-card__topline">
-          <span>{data.preview.resultLabel}</span>
-          <strong>{data.preview.resultTitle}</strong>
+
+      <div class="connect-stage">
+        <svg class="connect-wires" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <path class="wire" d="M 0 42 L 100 42" vector-effect="non-scaling-stroke" />
+          <path class="wire wire-rev" d="M 0 58 L 100 58" vector-effect="non-scaling-stroke" />
+        </svg>
+
+        <div class="node-card node-agent">
+          <span class="node-eyebrow">{data.connection.agent.eyebrow}</span>
+          <div class="node-logo">
+            {agentLogoSrc
+              ? <img src={agentLogoSrc} alt={data.connection.agent.title} />
+              : data.connection.agent.logo}
+          </div>
+          <div class="node-title">{data.connection.agent.title}</div>
         </div>
-        <pre><code>{data.preview.code}</code></pre>
+
+        <div class="node-card node-service">
+          <span class="node-eyebrow">{data.connection.service.eyebrow}</span>
+          <div class="node-logo">
+            {serviceLogoSrc
+              ? <img src={serviceLogoSrc} alt={data.connection.service.title} />
+              : data.connection.service.logo}
+          </div>
+          <div class="node-title">{data.connection.service.title}</div>
+        </div>
       </div>
     </div>
   </div>
-</section>
+</header>

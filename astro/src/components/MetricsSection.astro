@@ -2,28 +2,24 @@
 import type { UseCaseFrontmatter } from "../types";
 
 interface Props {
-  data: UseCaseFrontmatter["results"];
+  data: UseCaseFrontmatter["trust"];
 }
 
 const { data } = Astro.props;
 ---
 
-<section class="section" id="example" aria-labelledby="results-title">
-  <div class="section__header">
-    <span class="section__eyebrow">{data.eyebrow}</span>
-    <h2 id="results-title">{data.title}</h2>
-    <p>{data.text}</p>
-  </div>
-
-  <div class="data-showcase">
-    {
-      data.metrics.map((metric) => (
-        <article class:list={["metric-card", { "metric-card--large": metric.large }]}>
-          <span>{metric.label}</span>
-          <strong>{metric.value}</strong>
-          <p>{metric.text}</p>
-        </article>
-      ))
-    }
+<section class="trust">
+  <div class="wrap">
+    <div class="trust-grid">
+      {data.items.map((item) => (
+        <div class="trust-cell">
+          <span class="lbl">{item.label}</span>
+          <span class="stat">
+            {item.stat}<em>{item.statHighlight}</em>{item.statSuffix && ` ${item.statSuffix}`}
+          </span>
+          <span class="desc">{item.desc}</span>
+        </div>
+      ))}
+    </div>
   </div>
 </section>
