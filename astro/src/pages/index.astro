@@ -24,6 +24,13 @@ const pages = Object.entries(pageModules)
   })
   .filter((page) => page.slug && !page.slug.startsWith("_"))
   .sort((a, b) => a.title.localeCompare(b.title));
+
+const SITE_URL = "https://getalby.com/ai-tools";
+const SITE_NAME = "Alby — Bitcoin Tools for AI & Agents";
+const pageTitle = "AI tools index";
+const pageDescription = "Pay-per-call APIs for AI agents and developers — LinkedIn enrichment, URL metadata extraction, flight data, video generation, and more.";
+const fullTitle = `${pageTitle} | ${SITE_NAME}`;
+const canonical = `${SITE_URL}/`;
 ---
 
 <!doctype html>
@@ -31,12 +38,27 @@ const pages = Object.entries(pageModules)
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Astro pages | 402box</title>
-    <meta name="description" content="Index of Astro-rendered 402box pages." />
+    <title>{fullTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Alby" />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:site" content="@getAlby" />
   </head>
   <body>
     <main>
-      <h1>Astro pages</h1>
+      <h1>{SITE_NAME}</h1>
       <ul>
         {
           pages.map((page) => (

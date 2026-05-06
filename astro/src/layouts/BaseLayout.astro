@@ -14,6 +14,15 @@ interface Props {
 const { title, description, bodyClass, themeColor, ogTitle, ogDescription, jsonLd } = Astro.props;
 const favicon =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23202020'/%3E%3Ccircle cx='32' cy='32' r='18' fill='%23ffda4d'/%3E%3Cpath d='M35 10 22 34h10l-4 20 15-28H32z' fill='%23202020'/%3E%3C/svg%3E";
+
+const SITE_URL = "https://getalby.com/ai-tools";
+const SITE_NAME = "Alby — Bitcoin Tools for AI & Agents";
+const fullTitle = `${title} | ${SITE_NAME}`;
+const fullOgTitle = `${ogTitle} | ${SITE_NAME}`;
+
+// Astro.url.pathname looks like "/foo.html" during build; map index → root
+const rawPath = Astro.url.pathname.replace(/^\//, "");
+const canonical = rawPath === "" || rawPath === "index.html" ? `${SITE_URL}/` : `${SITE_URL}/${rawPath}`;
 ---
 
 <!doctype html>
@@ -21,12 +30,25 @@ const favicon =
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
+    <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content={themeColor} />
-    <meta property="og:title" content={ogTitle} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Alby" />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:title" content={fullOgTitle} />
     <meta property="og:description" content={ogDescription} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullOgTitle} />
+    <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:site" content="@getAlby" />
+
     <link rel="icon" href={favicon} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
