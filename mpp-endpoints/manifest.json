@@ -1,0 +1,457 @@
+[
+  {
+    "id": "agentmail",
+    "website": "https://agentmail.to",
+    "mpp_endpoint": "https://mpp.api.agentmail.to"
+  },
+  {
+    "id": "allium",
+    "website": "https://allium.so",
+    "mpp_endpoint": "https://agents.allium.so"
+  },
+  {
+    "id": "anthropic",
+    "website": "https://anthropic.com",
+    "mpp_endpoint": "https://anthropic.mpp.tempo.xyz"
+  },
+  {
+    "id": "browserbase",
+    "website": "https://browserbase.com",
+    "mpp_endpoint": "https://mpp.browserbase.com"
+  },
+  {
+    "id": "buildwithlocus",
+    "website": "https://buildwithlocus.com",
+    "mpp_endpoint": "https://mpp.buildwithlocus.com"
+  },
+  {
+    "id": "codex",
+    "website": "https://codex.io",
+    "mpp_endpoint": "https://graph.codex.io"
+  },
+  {
+    "id": "doma",
+    "website": "https://doma.xyz",
+    "mpp_endpoint": "https://mpp.doma.xyz"
+  },
+  {
+    "id": "dripstack",
+    "website": "https://dripstack.xyz/",
+    "mpp_endpoint": "https://dripstack.xyz"
+  },
+  {
+    "id": "dune",
+    "website": "https://dune.com",
+    "mpp_endpoint": "https://api.dune.com"
+  },
+  {
+    "id": "exa",
+    "website": "https://exa.ai",
+    "mpp_endpoint": "https://exa.mpp.tempo.xyz"
+  },
+  {
+    "id": "fal",
+    "website": "https://fal.ai",
+    "mpp_endpoint": "https://fal.mpp.tempo.xyz"
+  },
+  {
+    "id": "firecrawl",
+    "website": "https://firecrawl.dev",
+    "mpp_endpoint": "https://firecrawl.mpp.tempo.xyz"
+  },
+  {
+    "id": "govlaws",
+    "website": "https://govlaws.ai",
+    "mpp_endpoint": "https://govlaws.ai"
+  },
+  {
+    "id": "gemini",
+    "website": "https://ai.google.dev",
+    "mpp_endpoint": "https://gemini.mpp.tempo.xyz"
+  },
+  {
+    "id": "modal",
+    "website": "https://modal.com",
+    "mpp_endpoint": "https://modal.mpp.tempo.xyz"
+  },
+  {
+    "id": "nansen",
+    "website": "https://nansen.ai",
+    "mpp_endpoint": "https://api.nansen.ai"
+  },
+  {
+    "id": "openai",
+    "website": "https://openai.com",
+    "mpp_endpoint": "https://openai.mpp.tempo.xyz"
+  },
+  {
+    "id": "openrouter",
+    "website": "https://openrouter.ai",
+    "mpp_endpoint": "https://openrouter.mpp.tempo.xyz"
+  },
+  {
+    "id": "parallel",
+    "website": "https://parallel.ai",
+    "mpp_endpoint": "https://parallelmpp.dev"
+  },
+  {
+    "id": "alchemy",
+    "website": "https://agents.alchemy.com/",
+    "mpp_endpoint": "https://mpp.alchemy.com"
+  },
+  {
+    "id": "conduit",
+    "website": "https://mpp.conduit.xyz/",
+    "mpp_endpoint": "https://mpp.conduit.xyz"
+  },
+  {
+    "id": "rpc",
+    "website": "https://tempo.xyz",
+    "mpp_endpoint": "https://rpc.mpp.tempo.xyz"
+  },
+  {
+    "id": "quicknode",
+    "website": "https://quicknode.com/",
+    "mpp_endpoint": "https://mpp.quicknode.com"
+  },
+  {
+    "id": "storage",
+    "website": "https://tempo.xyz",
+    "mpp_endpoint": "https://storage.mpp.tempo.xyz"
+  },
+  {
+    "id": "pinata",
+    "website": "https://pinata.cloud",
+    "mpp_endpoint": "https://mpp.pinata.cloud"
+  },
+  {
+    "id": "stableemail",
+    "website": "https://stableemail.dev",
+    "mpp_endpoint": "https://stableemail.dev"
+  },
+  {
+    "id": "stableenrich",
+    "website": "https://stableenrich.dev",
+    "mpp_endpoint": "https://stableenrich.dev"
+  },
+  {
+    "id": "stabletravel",
+    "website": "https://stabletravel.dev",
+    "mpp_endpoint": "https://stabletravel.dev"
+  },
+  {
+    "id": "stablephone",
+    "website": "https://stablephone.dev",
+    "mpp_endpoint": "https://stablephone.dev"
+  },
+  {
+    "id": "stablesocial",
+    "website": "https://stablesocial.dev",
+    "mpp_endpoint": "https://stablesocial.dev"
+  },
+  {
+    "id": "stablestudio",
+    "website": "https://stablestudio.dev",
+    "mpp_endpoint": "https://stablestudio.dev"
+  },
+  {
+    "id": "stableupload",
+    "website": "https://stableupload.dev",
+    "mpp_endpoint": "https://stableupload.dev"
+  },
+  {
+    "id": "aviationstack",
+    "website": "https://aviationstack.com",
+    "mpp_endpoint": "https://aviationstack.mpp.tempo.xyz"
+  },
+  {
+    "id": "codestorage",
+    "website": "https://code.storage",
+    "mpp_endpoint": "https://codestorage.mpp.tempo.xyz"
+  },
+  {
+    "id": "flightapi",
+    "website": "https://flightapi.io",
+    "mpp_endpoint": "https://flightapi.mpp.tempo.xyz"
+  },
+  {
+    "id": "goflightlabs",
+    "website": "https://goflightlabs.com",
+    "mpp_endpoint": "https://goflightlabs.mpp.tempo.xyz"
+  },
+  {
+    "id": "oxylabs",
+    "website": "https://oxylabs.io",
+    "mpp_endpoint": "https://oxylabs.mpp.tempo.xyz"
+  },
+  {
+    "id": "spyfu",
+    "website": "https://spyfu.com",
+    "mpp_endpoint": "https://spyfu.mpp.tempo.xyz"
+  },
+  {
+    "id": "serpapi",
+    "website": "https://serpapi.com",
+    "mpp_endpoint": "https://serpapi.mpp.tempo.xyz"
+  },
+  {
+    "id": "googlemaps",
+    "website": "https://developers.google.com/maps",
+    "mpp_endpoint": "https://googlemaps.mpp.tempo.xyz"
+  },
+  {
+    "id": "kicksdb",
+    "website": "https://kicks.dev",
+    "mpp_endpoint": "https://kicksdb.mpp.tempo.xyz"
+  },
+  {
+    "id": "twocaptcha",
+    "website": "https://2captcha.com",
+    "mpp_endpoint": "https://twocaptcha.mpp.tempo.xyz"
+  },
+  {
+    "id": "postalform",
+    "website": "https://postalform.com",
+    "mpp_endpoint": "https://postalform.com"
+  },
+  {
+    "id": "prospect-butcher",
+    "website": "https://www.prospectbutcher.com",
+    "mpp_endpoint": "https://agents.prospectbutcher.shop"
+  },
+  {
+    "id": "martin-estate",
+    "website": "https://www.martinestate.com",
+    "mpp_endpoint": "https://agents.martinestate.com"
+  },
+  {
+    "id": "alphavantage",
+    "website": "https://www.alphavantage.co",
+    "mpp_endpoint": "https://alphavantage.mpp.paywithlocus.com"
+  },
+  {
+    "id": "apollo",
+    "website": "https://www.apollo.io",
+    "mpp_endpoint": "https://apollo.mpp.paywithlocus.com"
+  },
+  {
+    "id": "autoexchange",
+    "website": "https://auto.exchange",
+    "mpp_endpoint": "https://api.auto.exchange"
+  },
+  {
+    "id": "billboard",
+    "website": "https://x.com/MPPBillboard",
+    "mpp_endpoint": "https://billboard.mpp.paywithlocus.com"
+  },
+  {
+    "id": "brave",
+    "website": "https://brave.com/search",
+    "mpp_endpoint": "https://brave.mpp.paywithlocus.com"
+  },
+  {
+    "id": "builtwith",
+    "website": "https://builtwith.com",
+    "mpp_endpoint": "https://builtwith.mpp.paywithlocus.com"
+  },
+  {
+    "id": "clado",
+    "website": "https://clado.ai",
+    "mpp_endpoint": "https://clado.mpp.paywithlocus.com"
+  },
+  {
+    "id": "coingecko",
+    "website": "https://www.coingecko.com",
+    "mpp_endpoint": "https://coingecko.mpp.paywithlocus.com"
+  },
+  {
+    "id": "abstract-company-enrichment",
+    "website": "https://www.abstractapi.com/api/company-enrichment",
+    "mpp_endpoint": "https://abstract-company-enrichment.mpp.paywithlocus.com"
+  },
+  {
+    "id": "deepgram",
+    "website": "https://deepgram.com",
+    "mpp_endpoint": "https://deepgram.mpp.paywithlocus.com"
+  },
+  {
+    "id": "deepl",
+    "website": "https://www.deepl.com",
+    "mpp_endpoint": "https://deepl.mpp.paywithlocus.com"
+  },
+  {
+    "id": "deepseek",
+    "website": "https://deepseek.com",
+    "mpp_endpoint": "https://deepseek.mpp.paywithlocus.com"
+  },
+  {
+    "id": "diffbot",
+    "website": "https://www.diffbot.com",
+    "mpp_endpoint": "https://diffbot.mpp.paywithlocus.com"
+  },
+  {
+    "id": "diffbot-kg",
+    "website": "https://www.diffbot.com",
+    "mpp_endpoint": "https://diffbot-kg.mpp.paywithlocus.com"
+  },
+  {
+    "id": "diffbot-nl",
+    "website": "https://www.diffbot.com",
+    "mpp_endpoint": "https://diffbot-nl.mpp.paywithlocus.com"
+  },
+  {
+    "id": "edgar",
+    "website": "https://www.sec.gov/developer",
+    "mpp_endpoint": "https://edgar.mpp.paywithlocus.com"
+  },
+  {
+    "id": "edgar-search",
+    "website": "https://efts.sec.gov",
+    "mpp_endpoint": "https://edgar-search.mpp.paywithlocus.com"
+  },
+  {
+    "id": "abstract-email-reputation",
+    "website": "https://www.abstractapi.com/api/email-reputation-api",
+    "mpp_endpoint": "https://abstract-email-reputation.mpp.paywithlocus.com"
+  },
+  {
+    "id": "abstract-exchange-rates",
+    "website": "https://www.abstractapi.com/api/exchange-rate-api",
+    "mpp_endpoint": "https://abstract-exchange-rates.mpp.paywithlocus.com"
+  },
+  {
+    "id": "grok",
+    "website": "https://x.ai",
+    "mpp_endpoint": "https://grok.mpp.paywithlocus.com"
+  },
+  {
+    "id": "groq",
+    "website": "https://groq.com",
+    "mpp_endpoint": "https://groq.mpp.paywithlocus.com"
+  },
+  {
+    "id": "abstract-holidays",
+    "website": "https://www.abstractapi.com/api/holidays-api",
+    "mpp_endpoint": "https://abstract-holidays.mpp.paywithlocus.com"
+  },
+  {
+    "id": "hunter",
+    "website": "https://hunter.io",
+    "mpp_endpoint": "https://hunter.mpp.paywithlocus.com"
+  },
+  {
+    "id": "abstract-iban-validation",
+    "website": "https://www.abstractapi.com/api/iban-validation-api",
+    "mpp_endpoint": "https://abstract-iban-validation.mpp.paywithlocus.com"
+  },
+  {
+    "id": "abstract-ip-intelligence",
+    "website": "https://www.abstractapi.com/api/ip-intelligence-api",
+    "mpp_endpoint": "https://abstract-ip-intelligence.mpp.paywithlocus.com"
+  },
+  {
+    "id": "ipinfo",
+    "website": "https://ipinfo.io",
+    "mpp_endpoint": "https://ipinfo.mpp.paywithlocus.com"
+  },
+  {
+    "id": "judge0",
+    "website": "https://judge0.com",
+    "mpp_endpoint": "https://judge0.mpp.paywithlocus.com"
+  },
+  {
+    "id": "mapbox",
+    "website": "https://www.mapbox.com",
+    "mpp_endpoint": "https://mapbox.mpp.paywithlocus.com"
+  },
+  {
+    "id": "mathpix",
+    "website": "https://mathpix.com",
+    "mpp_endpoint": "https://mathpix.mpp.paywithlocus.com"
+  },
+  {
+    "id": "mistral",
+    "website": "https://mistral.ai",
+    "mpp_endpoint": "https://mistral.mpp.paywithlocus.com"
+  },
+  {
+    "id": "openweather",
+    "website": "https://openweathermap.org",
+    "mpp_endpoint": "https://openweather.mpp.paywithlocus.com"
+  },
+  {
+    "id": "perplexity",
+    "website": "https://perplexity.ai",
+    "mpp_endpoint": "https://perplexity.mpp.paywithlocus.com"
+  },
+  {
+    "id": "abstract-phone-intelligence",
+    "website": "https://www.abstractapi.com/api/phone-validation-api",
+    "mpp_endpoint": "https://abstract-phone-intelligence.mpp.paywithlocus.com"
+  },
+  {
+    "id": "rentcast",
+    "website": "https://rentcast.io",
+    "mpp_endpoint": "https://rentcast.mpp.paywithlocus.com"
+  },
+  {
+    "id": "replicate",
+    "website": "https://replicate.com",
+    "mpp_endpoint": "https://replicate.mpp.paywithlocus.com"
+  },
+  {
+    "id": "screenshotone",
+    "website": "https://screenshotone.com",
+    "mpp_endpoint": "https://screenshotone.mpp.paywithlocus.com"
+  },
+  {
+    "id": "stability-ai",
+    "website": "https://stability.ai",
+    "mpp_endpoint": "https://stability-ai.mpp.paywithlocus.com"
+  },
+  {
+    "id": "suno",
+    "website": "https://sunoapi.org",
+    "mpp_endpoint": "https://suno.mpp.paywithlocus.com"
+  },
+  {
+    "id": "tako",
+    "website": "https://tako.com",
+    "mpp_endpoint": "https://tako.com"
+  },
+  {
+    "id": "tavily",
+    "website": "https://tavily.com",
+    "mpp_endpoint": "https://tavily.mpp.paywithlocus.com"
+  },
+  {
+    "id": "abstract-timezone",
+    "website": "https://www.abstractapi.com/api/time-date-timezone-api",
+    "mpp_endpoint": "https://abstract-timezone.mpp.paywithlocus.com"
+  },
+  {
+    "id": "abstract-vat",
+    "website": "https://www.abstractapi.com/api/vat-validation-rates-api",
+    "mpp_endpoint": "https://abstract-vat.mpp.paywithlocus.com"
+  },
+  {
+    "id": "abstract-web-scraping",
+    "website": "https://www.abstractapi.com/api/web-scraping-api",
+    "mpp_endpoint": "https://abstract-web-scraping.mpp.paywithlocus.com"
+  },
+  {
+    "id": "wolframalpha",
+    "website": "https://www.wolframalpha.com",
+    "mpp_endpoint": "https://wolframalpha.mpp.paywithlocus.com"
+  },
+  {
+    "id": "stripe-climate",
+    "website": "https://stripe.com/climate",
+    "mpp_endpoint": "https://climate.stripe.dev"
+  },
+  {
+    "id": "papercut",
+    "website": "https://papercut.lol",
+    "mpp_endpoint": "https://papercut.lol"
+  }
+]
