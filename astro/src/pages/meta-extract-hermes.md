@@ -29,11 +29,11 @@ hero:
   connection:
     agent:
       eyebrow: "AI agent"
-      logo: "Hermes"
+      logo: "/logos/hermes.png"
       title: "Hermes Agent"
     service:
       eyebrow: "Meta-Extract"
-      logo: "M"
+      logo: "/logos/meta-extract.svg"
       title: "URL metadata API"
 trust:
   items:

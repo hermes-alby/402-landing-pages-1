@@ -29,11 +29,11 @@ hero:
   connection:
     agent:
       eyebrow: "AI agent"
-      logo: "OpenClaw"
+      logo: "/logos/openclaw.svg"
       title: "OpenClaw"
     service:
       eyebrow: "Meta-Extract"
-      logo: "M"
+      logo: "/logos/meta-extract.svg"
       title: "URL metadata API"
 trust:
   items:

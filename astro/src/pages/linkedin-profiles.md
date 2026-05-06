@@ -31,7 +31,7 @@ hero:
       title: "Any agent"
     service:
       eyebrow: "PayPerQ"
-      logo: "P"
+      logo: "/logos/payperq.svg"
       title: "Contacts Enrich API"
 trust:
   items:

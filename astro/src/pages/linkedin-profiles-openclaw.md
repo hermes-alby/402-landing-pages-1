@@ -29,11 +29,11 @@ hero:
   connection:
     agent:
       eyebrow: "AI agent"
-      logo: "OpenClaw"
+      logo: "/logos/openclaw.svg"
       title: "OpenClaw"
     service:
       eyebrow: "PayPerQ"
-      logo: "P"
+      logo: "/logos/payperq.svg"
       title: "Contacts Enrich API"
 trust:
   items:

@@ -14,20 +14,6 @@ IF SO, then take the root URL of the service (e.g. https://api.example.com/api/l
 Gather additional service description, USPs, keywords, audience that explain what it does. If missing in the file the file with that information.
 
 
-# 2. step: Internet research
-
-Take the sevice information and research related topics and services thorowly (do 3-5 web searches):
-What are people actually searching for around this topic?
-What's currently ranking on page 1? What angle are competitors taking?
-What questions do people commonly ask?
-What are potential related topics and keywords?
-
-Keep the search also generic on the high-level solution of the service. (e.g. do not limit it to AI or no-subscription)
-Report what you have searched for and what was the result.
-
-Now combine the basic information with your resaarch and create a service document ([folder]/service-details.md) based on the following structure:
-
-
 ## Service
 
 In this section describe the service
@@ -96,23 +82,3 @@ Explain how this persona benefits.
 
 ### Use Case 4: For [Persona/Industry]
 Explain how this persona benefits.
-
-
-## Research
-
-In this section add details about your search analysis.
-
-## Summary
-[2-3 paragraphs on what searchers want, what are people searching for, what are related topics]
-
-### Keywords
-[+ 3-5 keywords for SEO]
-
-### Similar Services
-[list similar services with their main USP]
-
-### User Reviews
-[list user reviews of related services. name the service and link to the review]
-
-## Your recommendation
-What is the angle you'll take for the content of landing page. Describe the reasoning on why those keywords are relevant and why it converts.

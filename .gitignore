@@ -6,3 +6,5 @@ artifacts-*.png
 .env.local
 .env.*.local
 tmp/
+.claude
+.astro/

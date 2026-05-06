@@ -29,11 +29,11 @@ hero:
   connection:
     agent:
       eyebrow: "AI agent"
-      logo: "Hermes"
+      logo: "/logos/hermes.png"
       title: "Hermes Agent"
     service:
       eyebrow: "FlightAPI"
-      logo: "F"
+      logo: "/logos/flightapi.png"
       title: "Flight data API"
 trust:
   items:

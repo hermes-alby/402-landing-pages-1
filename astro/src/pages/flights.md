@@ -33,7 +33,7 @@ hero:
       title: "Any agent"
     service:
       eyebrow: "FlightAPI"
-      logo: "F"
+      logo: "/logos/flightapi.png"
       title: "Flight data API"
 trust:
   items:

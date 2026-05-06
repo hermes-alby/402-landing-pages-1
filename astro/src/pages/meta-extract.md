@@ -32,7 +32,7 @@ hero:
       title: "Any agent"
     service:
       eyebrow: "Meta-Extract"
-      logo: "M"
+      logo: "/logos/meta-extract.svg"
       title: "URL metadata API"
 trust:
   items:

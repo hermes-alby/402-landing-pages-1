@@ -29,11 +29,11 @@ hero:
   connection:
     agent:
       eyebrow: "AI agent"
-      logo: "OpenClaw"
+      logo: "/logos/openclaw.svg"
       title: "OpenClaw"
     service:
       eyebrow: "FlightAPI"
-      logo: "F"
+      logo: "/logos/flightapi.png"
       title: "Flight data API"
 trust:
   items:

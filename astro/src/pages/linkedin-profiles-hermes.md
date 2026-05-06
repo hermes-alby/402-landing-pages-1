@@ -29,11 +29,11 @@ hero:
   connection:
     agent:
       eyebrow: "AI agent"
-      logo: "Hermes"
+      logo: "/logos/hermes.png"
       title: "Hermes Agent"
     service:
       eyebrow: "PayPerQ"
-      logo: "P"
+      logo: "/logos/payperq.svg"
       title: "Contacts Enrich API"
 trust:
   items:
