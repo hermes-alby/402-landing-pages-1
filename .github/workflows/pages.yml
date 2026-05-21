@@ -38,6 +38,13 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Merge static pages
+        run: |
+          if [ -d ../static ]; then
+            cp -r ../static/. dist/
+          fi
+        working-directory: astro
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 

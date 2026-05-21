@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lightning Service Provider Comparison — Alby</title>
+  <meta name="description" content="Overview and comparison of Lightning Service Providers (LSPs) you can use with Alby Hub: Megalith, Olympus, LNServer, Magma, LQwD, and Flashsats.">
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="/css/lsp-comparison.css">
+  <script src="/js/site.js" defer></script>
+</head>
+<body>
+  <main class="lsp-page">
+
+    <header class="hero">
+      <span class="eyebrow">⚡ Lightning Network</span>
+      <h1>Lightning Service Provider Comparison</h1>
+      <p class="lede">A practical overview of the LSPs you can connect to with Alby Hub — so you can pick the right liquidity partner for your self-custodial Lightning wallet.</p>
+    </header>
+
+    <section class="block">
+      <h2>What is an LSP?</h2>
+      <p>The Lightning Network is a payment layer built on top of Bitcoin. Payments travel over <strong>payment channels</strong> — two-party balances locked in a Bitcoin transaction that allow instant, low-fee transfers without touching the blockchain for every payment.</p>
+      <p>To send or receive Lightning payments, your wallet needs at least one channel with sufficient capacity. Opening a channel requires an on-chain transaction, and to <em>receive</em> sats you also need <strong>inbound liquidity</strong> — funds on the other side of a channel pointing at you.</p>
+      <p>A <strong>Lightning Service Provider (LSP)</strong> solves this. An LSP is a well-connected Lightning node that opens a channel to your wallet on demand, often providing inbound liquidity in the same step. No node operations, no peer hunting, no liquidity management — pay a fee, get a usable channel in seconds.</p>
+
+      <div class="explainer-grid">
+        <div class="explainer-card">
+          <div class="icon">⚡</div>
+          <h3>Instant payments</h3>
+          <p>Send and receive sats in milliseconds with negligible fees, anywhere in the world.</p>
+        </div>
+        <div class="explainer-card">
+          <div class="icon">🔗</div>
+          <h3>Channels</h3>
+          <p>Two-party balances locked on-chain that route off-chain payments through the network.</p>
+        </div>
+        <div class="explainer-card">
+          <div class="icon">💧</div>
+          <h3>Liquidity</h3>
+          <p>Inbound liquidity is the capacity on the LSP's side of the channel — it's what lets you receive.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>LSPs supported by Alby Hub</h2>
+      <div class="lsp-grid">
+
+        <article class="lsp-card">
+          <div class="name"><div class="badge">M</div><h3>Megalith</h3></div>
+          <p>One of the largest routing nodes on the Lightning Network. Offers LSPS1 and just-in-time (LSPS2) channels for self-custodial wallets and node runners.</p>
+          <div class="links">
+            <a href="https://megalithic.me">Website ↗</a>
+            <a href="https://megalithic.me/contact">Contact</a>
+          </div>
+        </article>
+
+        <article class="lsp-card">
+          <div class="name"><div class="badge">O</div><h3>Olympus by ZEUS</h3></div>
+          <p>Built by the ZEUS wallet team. Offers JIT 0-conf channels with wrapped-invoice privacy and open APIs — widely embedded in self-custodial wallets.</p>
+          <div class="links">
+            <a href="https://zeuslsp.com">Website ↗</a>
+          </div>
+        </article>
+
+        <article class="lsp-card">
+          <div class="name"><div class="badge">L</div><h3>LNServer Wave</h3></div>
+          <p>Positions itself on price — "liquidity at the lowest rates in the market." Up to 10M sats inbound with flexible 3–12 month terms.</p>
+          <div class="links">
+            <a href="https://lnserver.com">Website ↗</a>
+            <a href="https://t.me/lnserver">Telegram</a>
+          </div>
+        </article>
+
+        <article class="lsp-card">
+          <div class="name"><div class="badge">A</div><h3>Magma by Amboss</h3></div>
+          <p>A peer-to-peer liquidity marketplace rather than a single LSP — buy channels from many node operators at sizes from 500k up to 5M sats.</p>
+          <div class="links">
+            <a href="https://amboss.space/magma">Website ↗</a>
+            <a href="https://account.amboss.tech/help-and-support">Support</a>
+          </div>
+        </article>
+
+        <article class="lsp-card">
+          <div class="name"><div class="badge">Q</div><h3>LQwD</h3></div>
+          <p>Publicly listed (TSXV: LQWD) Lightning infrastructure company. Enterprise liquidity, now pivoted toward agentic and machine-to-machine micropayments via LQWD.ai.</p>
+          <div class="links">
+            <a href="https://lqwdtech.com">Website ↗</a>
+            <a href="mailto:info@lqwdtech.com">Contact</a>
+          </div>
+        </article>
+
+        <article class="lsp-card">
+          <div class="name"><div class="badge">F</div><h3>Flashsats</h3></div>
+          <p>Small-scale LSP aimed at new Lightning nodes that can't yet receive. Inbound channels up to 2M sats with flexible 4-week to 1-year terms.</p>
+          <div class="links">
+            <a href="https://flashsats.xyz">Website ↗</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Self-custody and the freedom to choose</h2>
+      <p>An LSP opens a Lightning channel <em>to your node</em>. That only matters if you actually control the node on the other end. With a custodial wallet, someone else holds your keys, picks your peers, and decides whether you can move your sats — there is no "your channel" to speak of.</p>
+      <p><strong>Self-custody puts you in charge of three things:</strong> your keys, your channels, and your routing relationships. Lose any one of them and you're back to asking permission.</p>
+
+      <div class="explainer-grid">
+        <div class="explainer-card">
+          <div class="icon">🔑</div>
+          <h3>Your keys, your sats</h3>
+          <p>Only the holder of the keys can sign transactions. Self-custody means no provider can freeze, censor, or lose your funds for you.</p>
+        </div>
+        <div class="explainer-card">
+          <div class="icon">🔀</div>
+          <h3>Choice of LSP</h3>
+          <p>Different providers have different fees, capacity, jurisdictions, and uptime. If one disappears or raises prices, you can open a channel with another — no migration, no lock-in.</p>
+        </div>
+        <div class="explainer-card">
+          <div class="icon">🛰️</div>
+          <h3>Choice of node</h3>
+          <p>You decide which node software to run, which peers to connect to, and whether to keep channels public or private. Your routing graph is yours to shape.</p>
+        </div>
+      </div>
+
+      <p>This is why Alby Hub ships with multiple LSPs out of the box rather than locking you into one. A healthy Lightning Network is one where users — not a handful of providers — choose where their liquidity comes from.</p>
+    </section>
+
+    <section class="cta">
+      <h2>Use these LSPs with Alby Hub</h2>
+      <p><strong>Alby Hub</strong> is a self-custodial Lightning wallet you run yourself. Full control of your keys and channels, with one-click connections to every LSP listed on this page.</p>
+      <p>No command line. No node maintenance. Built-in support for Nostr Wallet Connect so any compatible app can pay through your hub.</p>
+      <a class="button" href="https://albyhub.com">Get Alby Hub →</a>
+    </section>
+
+    <footer class="footer">
+      <p>Built by <a href="https://getalby.com">Alby</a> · Open-source self-custodial Lightning</p>
+    </footer>
+
+  </main>
+</body>
+</html>

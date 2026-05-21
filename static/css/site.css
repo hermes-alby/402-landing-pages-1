@@ -1,0 +1,27 @@
+:root {
+  --fg: #111;
+  --bg: #fff;
+  --accent: #f7931a;
+  --muted: #666;
+  --maxw: 720px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--fg);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+main {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+}
+
+a { color: var(--accent); }
+
+h1, h2, h3 { line-height: 1.2; }
