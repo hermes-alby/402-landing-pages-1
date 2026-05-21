@@ -72,6 +72,7 @@
 }
 .navlink:hover::after { transform: scaleX(1); }
 
+.topup-page a.btn-primary,
 .btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 11px 18px; background: var(--ink); color: var(--honey);
