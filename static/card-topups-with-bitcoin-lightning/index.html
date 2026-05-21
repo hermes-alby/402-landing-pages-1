@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment card topup with bitcoin lightning</title>
+  <meta name="description" content="Top up your crypto debit card in seconds using bitcoin Lightning from your self-custodial Alby Hub wallet. No friction, no waiting, no custodian.">
+  <meta name="keywords" content="crypto card topup, bitcoin debit card, lightning network, alby hub, self custody, sats to fiat, 2fiat, bitcoin spending">
+  <meta property="og:title" content="Topup — Spend bitcoin anywhere. Powered by Lightning.">
+  <meta property="og:description" content="Reload your crypto card in seconds with sats from your own Alby Hub. Self-custodial. Open source. Instant.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="../css/card-topups-with-bitcoin-lightning.css">
+  <script src="../js/site.js" defer></script>
+  <script src="../js/card-topups-with-bitcoin-lightning.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Topup",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "description": "Instant crypto card top-ups paid with bitcoin Lightning from a self-custodial Alby Hub wallet.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body class="topup-page">
+
+<nav class="topup-nav" id="top">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" fill="#FFDF6F"/></svg>
+        <span class="dot"></span>
+      </span>
+      <span>Topup</span>
+    </a>
+    <div class="nav-links">
+      <a href="#how" class="navlink">How it works</a>
+      <a href="#cards" class="navlink">Cards</a>
+      <a href="#features" class="navlink">Why Topup</a>
+      <a href="#faq" class="navlink">FAQ</a>
+    </div>
+    <div class="nav-actions">
+      <a href="https://albyhub.com" target="_blank" rel="noopener" class="btn-ghost">Get Alby Hub</a>
+      <a href="#app" class="btn-primary">Open Topup
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="dots"></div>
+  <div class="inner">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow-pill">
+          <span class="tag">NEW</span>
+          <span class="txt">Now supports 6 cards · Lightning-native</span>
+        </div>
+
+        <h1>
+          Spend bitcoin<br>
+          <span class="hl"><span class="fg">anywhere.</span><span class="bg"></span></span>
+          <span class="serif-it" style="color: var(--muted);">paid in sats.</span>
+        </h1>
+
+        <p class="lede">
+          Top up your crypto debit card in seconds with bitcoin Lightning — straight from your own self-custodial <strong>Alby Hub</strong>. No middleman holding your funds. No 3-day wait. Just sats → swipe.
+        </p>
+
+        <div class="cta-row">
+          <a href="#app" class="btn-primary btn-lg">Top up your card now
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#how" class="btn-ghost btn-lg">How it works</a>
+        </div>
+
+        <div class="trust-row">
+          <div class="trust">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F7931A"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
+            <span>Instant settlement</span>
+          </div>
+          <div class="trust">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="8" cy="15" r="4" stroke="currentColor" stroke-width="1.7"/><path d="m11 12 9-9m-3 3 2 2m-4 0 2 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            <span>Self-custodial</span>
+          </div>
+          <div class="trust">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Open source</span>
+          </div>
+          <div class="trust">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" stroke="currentColor" stroke-width="1.7"/></svg>
+            <span>No KYC to top up</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- HERO DEMO -->
+      <div class="demo">
+        <div class="demo-card">
+          <div class="top">
+            <span class="tag">PLATINUM</span>
+            <div class="chip"></div>
+          </div>
+          <div>
+            <div class="mono num">•••• •••• •••• 4421</div>
+            <div class="row">
+              <span class="name">2fiat</span>
+              <span class="mono exp">07/29</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-app">
+          <div class="chrome">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span class="logo-mark">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" fill="#FFDF6F"/></svg>
+                <span class="dot"></span>
+              </span>
+              <span class="name">Topup</span>
+            </div>
+            <div class="mono conn"><span class="dot"></span>HUB CONNECTED</div>
+          </div>
+
+          <div class="steps">
+            <span class="on"></span><span></span><span></span><span></span>
+          </div>
+
+          <!-- step 0: amount -->
+          <div class="demo-pane active">
+            <label class="label">Card</label>
+            <div class="card-pick">
+              <button class="on" data-card="2fiat">2fiat</button>
+              <button data-card="bitsa">Bitsa</button>
+              <button data-card="crypto">Spend.</button>
+            </div>
+
+            <label class="label">Top up amount</label>
+            <div class="amount-input">
+              <span class="cur">€</span>
+              <input type="number" value="50" min="1">
+            </div>
+
+            <div class="preset-row">
+              <button data-amt="20">€20</button>
+              <button class="on" data-amt="50">€50</button>
+              <button data-amt="100">€100</button>
+              <button data-amt="250">€250</button>
+            </div>
+
+            <div class="summary">
+              <div>
+                <div class="k">You pay</div>
+                <div class="v sats-v">46,000 sats</div>
+              </div>
+              <div style="text-align:right;">
+                <div class="k">Settles in</div>
+                <div class="v green">~2s</div>
+              </div>
+            </div>
+
+            <button class="cta-block btn-generate">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#FFDF6F"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
+              Generate Lightning invoice
+            </button>
+          </div>
+
+          <!-- step 1: invoice -->
+          <div class="demo-pane pane-invoice">
+            <div class="lead">Top up <strong>2fiat</strong> with</div>
+            <div class="big">€50</div>
+
+            <div class="qr-box">
+              <svg viewBox="0 0 21 21" style="width:100%;height:100%;" aria-hidden="true">
+                <!-- finders -->
+                <path fill="#18170F" d="M0 0h7v1H0zM0 6h7v1H0zM0 0h1v7H0zM6 0h1v7H6zM2 2h3v3H2zM14 0h7v1h-7zM14 6h7v1h-7zM14 0h1v7h-1zM20 0h1v7h-1zM16 2h3v3h-3zM0 14h7v1H0zM0 20h7v1H0zM0 14h1v7H0zM6 14h1v7H6zM2 16h3v3H2z"/>
+                <!-- pattern dots -->
+                <rect x="9" y="2" width="1" height="1" fill="#18170F"/>
+                <rect x="11" y="3" width="1" height="1" fill="#18170F"/>
+                <rect x="10" y="5" width="1" height="1" fill="#18170F"/>
+                <rect x="12" y="6" width="1" height="1" fill="#18170F"/>
+                <rect x="9" y="8" width="1" height="1" fill="#18170F"/>
+                <rect x="11" y="9" width="1" height="1" fill="#18170F"/>
+                <rect x="13" y="10" width="1" height="1" fill="#18170F"/>
+                <rect x="2" y="10" width="1" height="1" fill="#18170F"/>
+                <rect x="4" y="11" width="1" height="1" fill="#18170F"/>
+                <rect x="6" y="9" width="1" height="1" fill="#18170F"/>
+                <rect x="8" y="12" width="1" height="1" fill="#18170F"/>
+                <rect x="10" y="13" width="1" height="1" fill="#18170F"/>
+                <rect x="12" y="11" width="1" height="1" fill="#18170F"/>
+                <rect x="9" y="15" width="1" height="1" fill="#18170F"/>
+                <rect x="11" y="16" width="1" height="1" fill="#18170F"/>
+                <rect x="13" y="17" width="1" height="1" fill="#18170F"/>
+                <rect x="9" y="18" width="1" height="1" fill="#18170F"/>
+                <rect x="12" y="19" width="1" height="1" fill="#18170F"/>
+                <rect x="15" y="10" width="1" height="1" fill="#18170F"/>
+                <rect x="17" y="11" width="1" height="1" fill="#18170F"/>
+                <rect x="19" y="9" width="1" height="1" fill="#18170F"/>
+                <rect x="18" y="13" width="1" height="1" fill="#18170F"/>
+                <rect x="15" y="14" width="1" height="1" fill="#18170F"/>
+                <rect x="20" y="15" width="1" height="1" fill="#18170F"/>
+                <rect x="14" y="16" width="1" height="1" fill="#18170F"/>
+                <rect x="17" y="17" width="1" height="1" fill="#18170F"/>
+                <rect x="19" y="18" width="1" height="1" fill="#18170F"/>
+                <rect x="16" y="20" width="1" height="1" fill="#18170F"/>
+              </svg>
+              <div class="overlay">
+                <div class="bolt">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="#18170F"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="mono invoice">
+              <span class="lnstr">lnbc46000n1pj9k...4p2gn5</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="8" y="8" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3" stroke="currentColor" stroke-width="1.6"/></svg>
+            </div>
+
+            <button class="cta-yellow btn-pay">Pay from Alby Hub →</button>
+          </div>
+
+          <!-- step 2: paying -->
+          <div class="demo-pane pane-paying">
+            <div class="spinner">
+              <div class="ring1"></div>
+              <div class="ring2"></div>
+              <div class="core">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="#F7931A"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
+              </div>
+            </div>
+            <div class="t1">Routing payment...</div>
+            <div class="mono t2">3 hops · ~0.4s avg</div>
+          </div>
+
+          <!-- step 3: success -->
+          <div class="demo-pane pane-success">
+            <div class="check">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="t1">Card topped up!</div>
+            <div class="t2">€50 available on •••• 4421</div>
+            <div class="settle">
+              <span class="k">Settled in</span>
+              <span class="v mono">2.3s</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span class="mono">ALBY HUB</span><span class="mono">⚡ LIGHTNING</span><span class="mono">2FIAT</span><span class="mono">BITSA</span><span class="mono">SPEND.COM</span><span class="mono">NWC</span><span class="mono">BITREFILL</span><span class="mono">ALBY GO</span><span class="mono">⚡ LIGHTNING</span>
+    <span class="mono">ALBY HUB</span><span class="mono">⚡ LIGHTNING</span><span class="mono">2FIAT</span><span class="mono">BITSA</span><span class="mono">SPEND.COM</span><span class="mono">NWC</span><span class="mono">BITREFILL</span><span class="mono">ALBY GO</span><span class="mono">⚡ LIGHTNING</span>
+    <span class="mono">ALBY HUB</span><span class="mono">⚡ LIGHTNING</span><span class="mono">2FIAT</span><span class="mono">BITSA</span><span class="mono">SPEND.COM</span><span class="mono">NWC</span><span class="mono">BITREFILL</span><span class="mono">ALBY GO</span><span class="mono">⚡ LIGHTNING</span>
+  </div>
+</div>
+
+<!-- HOW -->
+<section id="how" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="mono kicker">HOW IT WORKS · 3 STEPS</div>
+        <h2 class="h2-big">From sats to swipe<br>in three moves. <span class="serif-it" style="color:var(--muted);">that's it.</span></h2>
+      </div>
+      <a href="#app" class="btn-primary" style="padding:13px 20px;">Start now
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <div class="steps-stack">
+      <!-- Step 01 -->
+      <article class="step-card">
+        <div>
+          <div class="tag-line">
+            <span class="n">01</span>
+            <span class="mono lbl">WALLET</span>
+          </div>
+          <h3>Run your Alby Hub</h3>
+          <p class="copy">Spin up your own self-custodial Lightning node in one click — at home, on a Raspberry Pi, or in Alby Cloud. You hold the keys. You hold the sats.</p>
+          <a href="https://albyhub.com" target="_blank" rel="noopener" class="btn-primary" style="padding:12px 18px;font-size:14px;">Get Alby Hub
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div>
+          <ul class="bullets">
+            <li><span class="b"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>One-click setup</li>
+            <li><span class="b"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Self-custodial</li>
+            <li><span class="b"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Built-in card top-ups via Lightning</li>
+          </ul>
+        </div>
+        <div class="visual-wrap">
+          <div class="visual-hub">
+            <div class="hd">
+              <div class="lbl">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
+                <span>Alby Hub</span>
+              </div>
+              <span class="mono online"><span class="d"></span>ONLINE</span>
+            </div>
+            <div class="mono bal-k">BALANCE</div>
+            <div class="bal-v">1,420,917 <small>sats</small></div>
+            <div class="bars">
+              <i style="opacity:.22;"></i><i style="opacity:.29;"></i><i style="opacity:.36;"></i><i style="opacity:.43;"></i><i style="opacity:.50;"></i><i style="opacity:.57;"></i><i style="opacity:.65;"></i>
+            </div>
+            <div class="mono ft"><span>4 CHANNELS</span><span>2.1M sat inbound</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Step 02 -->
+      <article class="step-card">
+        <div>
+          <div class="tag-line">
+            <span class="n">02</span>
+            <span class="mono lbl">CARD</span>
+          </div>
+          <h3>Pick your crypto card</h3>
+          <p class="copy">Order a debit card from your favourite issuer — 2fiat, Bitsa, Spend., RedotPay or any Lightning-compatible top-up card. Use it anywhere Visa or Mastercard is accepted.</p>
+          <a href="#cards" class="btn-primary" style="padding:12px 18px;font-size:14px;">Browse cards
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div>
+          <ul class="bullets">
+            <li><span class="b"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Visa &amp; Mastercard</li>
+            <li><span class="b"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Apple Pay &amp; Google Pay</li>
+            <li><span class="b"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Physical + virtual</li>
+          </ul>
+        </div>
+        <div class="visual-wrap">
+          <div class="visual-card">
+            <div class="pc" style="top:6px;left:0;right:-8px;background:linear-gradient(135deg,#c2410c 0%,#7c2d12 100%);transform:rotate(4deg);">
+              <div class="chip"></div>
+              <div class="mono num">•••• 1111</div>
+            </div>
+            <div class="pc" style="top:38px;left:18px;right:-8px;background:linear-gradient(135deg,#1d4d8c 0%,#0a2546 100%);transform:rotate(-2deg);">
+              <div class="chip"></div>
+              <div class="mono num">•••• 2222</div>
+            </div>
+            <div class="pc" style="top:78px;left:36px;right:-8px;background:linear-gradient(135deg,#2A2820 0%,#0d0d0a 100%);transform:rotate(6deg);">
+              <div class="chip"></div>
+              <div class="mono num">•••• 3333</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Step 03 -->
+      <article class="step-card">
+        <div>
+          <div class="tag-line">
+            <span class="n">03</span>
+            <span class="mono lbl">TOPUP</span>
+          </div>
+          <h3>Reload with Topup</h3>
+          <p class="copy">Open the Topup app, pick your card, choose an amount, pay the Lightning invoice from your Hub — done. Funds land on your card in seconds, not days.</p>
+          <a href="#app" class="btn-primary" style="padding:12px 18px;font-size:14px;">Launch Topup
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div>
+          <ul class="bullets">
+            <li><span class="b"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Sub-second settlement</li>
+            <li><span class="b"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Self-custodial throughout</li>
+            <li><span class="b"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Open source — audit it yourself</li>
+          </ul>
+        </div>
+        <div class="visual-wrap">
+          <div class="visual-topup">
+            <div class="blob"></div>
+            <div class="hd">
+              <span class="logo-mark">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" fill="#FFDF6F"/></svg>
+                <span class="dot"></span>
+              </span>
+              <span>Topup</span>
+            </div>
+            <div class="body">
+              <div class="mono k">TOPPING UP NOW</div>
+              <div class="v">€50.00</div>
+              <div class="ft">
+                <span class="mono sats">46,000 sats</span>
+                <span class="paid">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Paid
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section id="cards" class="cards-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="mono kicker">SUPPORTED CARDS</div>
+        <h2 class="h2-mid">Pick your card.<br><span class="serif-it" style="color:var(--honey);">we top it up.</span></h2>
+      </div>
+      <p class="lede">Topup is built around an open invoice spec. Any card issuer that accepts Lightning invoices for top-ups can plug in — and we're adding more every month.</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card-tile">
+        <div class="card-art" style="background:linear-gradient(135deg,#2A2820 0%,#0d0d0a 100%);">
+          <span class="badge">MOST POPULAR</span>
+          <div class="chip"></div>
+          <div class="mono num">•••• ••11</div>
+        </div>
+        <div class="row"><h3>2fiat</h3><span class="mono tag">EU · Visa</span></div>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>No KYC up to €1k</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Apple Pay</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Lightning native</li>
+        </ul>
+      </div>
+
+      <div class="card-tile">
+        <div class="card-art" style="background:linear-gradient(135deg,#1d4d8c 0%,#0a2546 100%);">
+          <div class="chip"></div>
+          <div class="mono num">•••• ••22</div>
+        </div>
+        <div class="row"><h3>Bitsa</h3><span class="mono tag">EU · Mastercard</span></div>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Anonymous tier</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Physical &amp; virtual</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Top-up via LN</li>
+        </ul>
+      </div>
+
+      <div class="card-tile">
+        <div class="card-art" style="background:linear-gradient(135deg,#c2410c 0%,#7c2d12 100%);">
+          <div class="chip"></div>
+          <div class="mono num">•••• ••33</div>
+        </div>
+        <div class="row"><h3>Spend.</h3><span class="mono tag">Global · Visa</span></div>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>190+ countries</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Cashback in sats</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>No FX markup</li>
+        </ul>
+      </div>
+
+      <div class="card-tile">
+        <div class="card-art" style="background:linear-gradient(135deg,#16a34a 0%,#14532d 100%);">
+          <div class="chip"></div>
+          <div class="mono num">•••• ••44</div>
+        </div>
+        <div class="row"><h3>RedotPay</h3><span class="mono tag">Asia · Mastercard</span></div>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>HK/SG friendly</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Virtual instant</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sat-back</li>
+        </ul>
+      </div>
+
+      <div class="card-tile">
+        <div class="card-art" style="background:linear-gradient(135deg,#7c3aed 0%,#3b0764 100%);">
+          <div class="chip"></div>
+          <div class="mono num">•••• ••55</div>
+        </div>
+        <div class="row"><h3>Holyheld</h3><span class="mono tag">EU · Visa</span></div>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Crypto natively</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>SEPA top-up</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Lightning beta</li>
+        </ul>
+      </div>
+
+      <div class="card-tile">
+        <div class="card-art" style="background:linear-gradient(135deg,#6B6555 0%,#2A2820 100%);">
+          <div class="chip"></div>
+          <div class="mono num">•••• ••66</div>
+        </div>
+        <div class="row"><h3>Your card?</h3><span class="mono tag">COMING SOON</span></div>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Want yours listed?</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Open an issue on GitHub</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>PRs welcome</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="section">
+  <div class="wrap">
+    <div style="max-width:760px;margin-bottom:56px;">
+      <div class="mono kicker">WHY TOPUP</div>
+      <h2 style="font-size:clamp(38px, 5vw, 60px);">The fastest way to turn sats into <span class="serif-it" style="color:var(--muted);">real-world spend.</span></h2>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="#F7931A"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></div>
+        <h3>Sub-second</h3>
+        <p>Lightning settles in milliseconds. Your card balance updates before the spinner even loads.</p>
+      </div>
+      <div class="feature">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="8" cy="15" r="4" stroke="currentColor" stroke-width="1.7"/><path d="m11 12 9-9m-3 3 2 2m-4 0 2 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+        <h3>Your keys. Your sats.</h3>
+        <p>Topup never touches your funds. Sats flow direct from your Alby Hub to the card issuer.</p>
+      </div>
+      <div class="feature">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.7"/></svg></div>
+        <h3>No middleman</h3>
+        <p>No custodian holding your money for 3 days. No "processing" delays. Just a Lightning invoice paid.</p>
+      </div>
+      <div class="feature">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Open source</h3>
+        <p>MIT licensed, audit-friendly. Fork it, run it yourself, or contribute on GitHub.</p>
+      </div>
+      <div class="feature">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" stroke="currentColor" stroke-width="1.7"/></svg></div>
+        <h3>Spend anywhere</h3>
+        <p>60M+ Visa &amp; Mastercard merchants. Tap, swipe, online, ATM — same as any debit card.</p>
+      </div>
+      <div class="feature">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" stroke="#F7931A" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+        <h3>Built for circular econ.</h3>
+        <p>Get paid in sats. Top up. Spend at the grocery store. Live on bitcoin, finally.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APP CTA -->
+<section id="app" class="app-cta">
+  <div class="wrap">
+    <div class="cta-box">
+      <div class="blob1"></div>
+      <div class="blob2"></div>
+
+      <div class="cta-grid">
+        <div>
+          <h2>Ready to live on<br><span class="serif-it">bitcoin?</span></h2>
+          <p>Set up your Alby Hub, grab a card you like, and start topping up in seconds. The whole stack is yours.</p>
+          <div class="btns">
+            <a href="https://albyhub.com" target="_blank" rel="noopener" class="btn-primary btn-lg">① Get Alby Hub
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#cards" class="btn-ghost btn-lg">② Choose a card</a>
+            <a href="#top" class="btn-ghost btn-lg">③ Open Topup</a>
+          </div>
+        </div>
+
+        <div class="cta-stat">
+          <div class="mono kicker">LIVE STATS</div>
+          <div class="grid">
+            <div class="stat-row"><span class="n">2.3s</span><span class="l">Avg settlement</span></div>
+            <div class="stat-row"><span class="n">6</span><span class="l">Cards supported</span></div>
+            <div class="stat-row"><span class="n">MIT</span><span class="l">Licensed &amp; open source</span></div>
+            <div class="stat-row"><span class="n">∞</span><span class="l">Times you can do this</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq-section">
+  <div class="faq-wrap">
+    <div class="mono kicker">FAQ</div>
+    <h2 class="h2-sm">Questions, <span class="serif-it" style="color:var(--muted);">answered.</span></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button>
+          <span class="q">Is Topup custodial? Are you holding my money?</span>
+          <span class="plus"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="a"><div class="a-inner">No. Topup is a thin wrapper around the card issuer's Lightning invoice API. Sats flow directly from your Alby Hub to the issuer — Topup never touches your funds, never holds keys, never KYCs you. The whole app is client-side and open source.</div></div>
+      </div>
+      <div class="faq-item">
+        <button>
+          <span class="q">Do I need an Alby Hub to use Topup?</span>
+          <span class="plus"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="a"><div class="a-inner">You need any Lightning wallet to pay the invoice, but Topup is designed to integrate seamlessly with Alby Hub via NWC (Nostr Wallet Connect). One-tap pay, no QR scanning required. Get a Hub at albyhub.com — it's free and one-click to set up.</div></div>
+      </div>
+      <div class="faq-item">
+        <button>
+          <span class="q">Which cards work?</span>
+          <span class="plus"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="a"><div class="a-inner">Today: 2fiat, Bitsa, Spend., RedotPay, and Holyheld (beta). Any card issuer that exposes a Lightning top-up endpoint can be added. Open an issue on GitHub and we'll wire it up — or send a PR.</div></div>
+      </div>
+      <div class="faq-item">
+        <button>
+          <span class="q">Why use Lightning instead of just buying with a debit card?</span>
+          <span class="plus"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="a"><div class="a-inner">Because you already have sats. If you earn in bitcoin, get tipped on Nostr, run a Lightning business, or just stack — you skip the off-ramp entirely. No exchange, no KYC for the top-up, no bank delay. Sats → spend in 2 seconds.</div></div>
+      </div>
+      <div class="faq-item">
+        <button>
+          <span class="q">Can I run Topup myself?</span>
+          <span class="plus"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="a"><div class="a-inner">Absolutely. The whole thing is a static site — clone the repo, deploy it, point it at your own CORS proxy.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="topup-footer">
+  <div class="wrap">
+    <div class="row">
+      <div>
+        <div class="brand">
+          <span class="logo-mark">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" fill="#FFDF6F"/></svg>
+            <span class="dot"></span>
+          </span>
+          <span>Topup</span>
+        </div>
+        <p>Instant crypto card top-ups, paid with bitcoin Lightning from your self-custodial Alby Hub.</p>
+      </div>
+      <div class="social">
+        <a href="https://github.com/getAlby" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.36-3.87-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.69.08-.69 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.16 1.18a11 11 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.62 1.58.23 2.75.11 3.04.73.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.4-5.27 5.69.41.35.78 1.05.78 2.12v3.14c0 .31.21.67.8.56C20.21 21.38 23.5 17.07 23.5 12 23.5 5.65 18.35.5 12 .5Z"/></svg>
+        </a>
+        <a href="https://x.com/getAlby" target="_blank" rel="noopener" aria-label="X">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.832l-4.74-6.197L6 22H2.744l8.02-9.166L1.5 2h7.012l4.29 5.673L18.244 2Zm-1.196 18h1.88L7.06 4H5.06l11.988 16Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
