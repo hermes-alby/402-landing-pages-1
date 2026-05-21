@@ -28,12 +28,13 @@ static/
 
 A page at `static/foo/index.html` is served at `/foo/`.
 
-Reference shared files with absolute paths from the page:
+Reference shared files with relative paths from the page (each page sits
+one level deep under `static/`, so shared files are one directory up):
 
 ```html
-<link rel="stylesheet" href="/css/site.css">
-<script src="/js/site.js" defer></script>
-<img src="/assets/logo.svg" alt="">
+<link rel="stylesheet" href="../css/site.css">
+<script src="../js/site.js" defer></script>
+<img src="../assets/logo.svg" alt="">
 ```
 
 Static files are copied over the Astro build, so a `static/<slug>/` will
@@ -54,14 +55,14 @@ Use this when asking Claude to add a new static page:
 > - Plain HTML5, no framework, no build step. Use `<!doctype html>`,
 >   `<html lang="en">`, `<meta charset="utf-8">`, a `<meta name="viewport"
 >   content="width=device-width, initial-scale=1">` tag, and a `<title>`.
-> - Link the shared stylesheet at `/css/site.css` and the shared script at
->   `/js/site.js` (use `defer`). Add page-specific CSS/JS only if needed,
+> - Link the shared stylesheet at `../css/site.css` and the shared script at
+>   `../js/site.js` (use `defer`). Add page-specific CSS/JS only if needed,
 >   placing it in `static/css/<slug>.css` or `static/js/<slug>.js` and
->   linking with an absolute path (`/css/<slug>.css`, `/js/<slug>.js`).
+>   linking with a relative path (`../css/<slug>.css`, `../js/<slug>.js`).
 > - Put any images, fonts, or downloads under `static/assets/` and reference
->   them with absolute paths (e.g. `/assets/<file>`). Do not hotlink remote
+>   them with relative paths (e.g. `../assets/<file>`). Do not hotlink remote
 >   assets.
-> - All internal links must be absolute (`/some-page/`), not relative.
+> - Internal links to other static pages should be relative (`../other-page/`).
 > - Pick `<slug>` so it does not collide with an Astro route under
 >   `astro/src/pages/` — static files are copied over the Astro build and
 >   would shadow them.
