@@ -5,16 +5,15 @@ Landing pages for Alby 402 services, hosted on GitHub Pages.
 ## Structure
 
 - `astro/` — Astro app. Source pages live in `astro/src/pages/`; build output goes to `astro/dist/`.
-- `static/` — plain HTML/CSS/JS pages served alongside the Astro site (see below).
+- `static/` — plain HTML/CSS/JS pages deployed under `/x/` (see below).
 - `services/`, `mpp-endpoints/`, `assets/`, `skills/` — service definitions and shared resources.
-- `.github/workflows/pages.yml` — builds Astro, merges `static/` on top, and deploys to GitHub Pages.
+- `.github/workflows/pages.yml` — builds Astro into `/ai-tools/`, publishes `static/` under `/x/`, and deploys to GitHub Pages.
 
 ## Static pages
 
-Plain HTML/CSS/JS pages served alongside the Astro site. The deploy workflow
-builds Astro into `astro/dist/`, then copies the contents of `static/` over
-the top before publishing. Anything in `static/` ships verbatim — no build
-step, no framework.
+Plain HTML/CSS/JS pages deployed under the `/x/` path. The deploy workflow
+builds Astro into `/ai-tools/` and publishes the contents of `static/` under
+`/x/`. Anything in `static/` ships verbatim — no build step, no framework.
 
 ### Layout
 
@@ -26,7 +25,7 @@ static/
   <slug>/   one folder per page, containing index.html
 ```
 
-A page at `static/foo/index.html` is served at `/foo/`.
+A page at `static/foo/index.html` is served at `/x/foo/`.
 
 Reference shared files with relative paths from the page (each page sits
 one level deep under `static/`, so shared files are one directory up):
@@ -37,9 +36,9 @@ one level deep under `static/`, so shared files are one directory up):
 <img src="../assets/logo.svg" alt="">
 ```
 
-Static files are copied over the Astro build, so a `static/<slug>/` will
-shadow an Astro route at the same path — pick slugs that do not collide with
-anything under `astro/src/pages/`.
+Static pages and the Astro build are published under separate paths (`/x/`
+and `/ai-tools/`), so static slugs no longer collide with Astro routes. Pick
+slugs that are unique among the other folders in `static/`.
 
 ### Prompt for creating a new static page
 
@@ -63,9 +62,9 @@ Use this when asking Claude to add a new static page:
 >   them with relative paths (e.g. `../assets/<file>`). Do not hotlink remote
 >   assets.
 > - Internal links to other static pages should be relative (`../other-page/`).
-> - Pick `<slug>` so it does not collide with an Astro route under
->   `astro/src/pages/` — static files are copied over the Astro build and
->   would shadow them.
+> - Pick a `<slug>` that is unique among the existing page folders in
+>   `static/`. (Static pages deploy under `/x/`, separate from the Astro
+>   app under `/ai-tools/`, so they no longer collide with Astro routes.)
 > - Do not modify the Astro app under `astro/`, the workflow under
 >   `.github/`, or files in `static/css/`, `static/js/`, `static/assets/`
 >   that are already shared by other pages — add new files instead.

@@ -38,10 +38,18 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Merge static pages
+      - name: Assemble site
         run: |
+          rm -rf ../_site
+          # Astro build is served under /ai-tools
+          mkdir -p ../_site/ai-tools
+          cp -r dist/. ../_site/ai-tools/
+          # Static pages are served under /x
           if [ -d ../static ]; then
-            cp -r ../static/. dist/
+            # Refresh static/sitemap.xml so it always reflects the pages shipped
+            node ../scripts/static_sitemap.mjs
+            mkdir -p ../_site/x
+            cp -r ../static/. ../_site/x/
           fi
         working-directory: astro
 
@@ -51,7 +59,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: astro/dist
+          path: _site
 
   deploy:
     needs: build
