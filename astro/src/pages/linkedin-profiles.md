@@ -1,11 +1,11 @@
 ---
 layout: ../layouts/UseCasePage.astro
-title: "LinkedIn Profile Enrichment API · Pay Per Query, No Subscription | PayPerQ"
-description: "Find and enrich LinkedIn profiles across 800M+ professionals with natural-language search. Pay per verified profile. No subscription, no credit packs, no contracts."
+title: "PayPerQ LinkedIn Profile API · Pay Per Query Enrichment"
+description: "Search and enrich LinkedIn profiles with PayPerQ. Find verified contacts from natural-language queries, pay per useful result, and avoid a prospecting seat license."
 bodyClass: "page-linkedin"
 themeColor: "#0b0b0c"
-ogTitle: "LinkedIn Profile Enrichment API — Pay Per Query, No Subscription"
-ogDescription: "Verified emails, GitHub, Scholar, and full LinkedIn data from 800M+ profiles. One endpoint, billed per verified profile. Built for agents."
+ogTitle: "PayPerQ LinkedIn Profile API — Pay Per Query Enrichment"
+ogDescription: "Verified LinkedIn profile enrichment from natural-language queries. One endpoint, billed per useful profile, built for agent workflows."
 schema:
   name: "PayPerQ LinkedIn Profile Enrichment API"
   description: "Pay-per-query LinkedIn profile search and enrichment API with natural-language search across 800M+ professionals."
@@ -14,7 +14,7 @@ schema:
   providerName: "PayPerQ"
 hero:
   ghostNumber: "800M"
-  eyebrow: "Pay-per-query · No subscription"
+  eyebrow: "PayPerQ LinkedIn profile API · Pay-per-query · No subscription"
   title:
     lines:
       - "Find anyone."

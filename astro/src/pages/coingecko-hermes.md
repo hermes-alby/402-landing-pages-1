@@ -1,11 +1,11 @@
 ---
 layout: ../layouts/UseCasePage.astro
-title: "CoinGecko API for Hermes Agent · Pay Per Call, Full Crypto Data"
-description: "Wire CoinGecko market data into Hermes Agent. Live prices, historical OHLC, exchanges, NFT, on-chain DEX feeds — billed per call. No signup, no monthly plan, no API key."
+title: "Hermes Agent Crypto Data · CoinGecko API Skill"
+description: "Give Hermes Agent live crypto prices, historical OHLC, token lookup, exchange data, NFT, and on-chain DEX feeds through a pay-per-call CoinGecko skill."
 bodyClass: "page-coingecko"
 themeColor: "#0b0b0c"
-ogTitle: "CoinGecko API for Hermes Agent — Pay Per Call Crypto Data"
-ogDescription: "Full CoinGecko market data inside your Hermes Agent flow. One skill, billed per call, no API key wrangling."
+ogTitle: "Hermes Agent Crypto Data — CoinGecko API Skill"
+ogDescription: "Wire CoinGecko market data into Hermes Agent for crypto research, trading flows, portfolio summaries, and DeFi monitoring."
 schema:
   name: "CoinGecko via Locus for Hermes Agent"
   description: "Crypto market data skill for Hermes Agent flows — full CoinGecko coverage billed per call via x402."
@@ -14,13 +14,13 @@ schema:
   providerName: "Locus"
 hero:
   ghostNumber: "HERMES"
-  eyebrow: "Hermes Agent · Pay-per-call · No subscription"
+  eyebrow: "Hermes Agent crypto data · CoinGecko API skill · Pay per call"
   title:
     lines:
-      - "Hermes Agent,"
-      - "wired into"
-    highlight: "every market."
-  lead: "Drop CoinGecko via Locus into your Hermes Agent flow as a single skill. Token symbols and IDs go in, live prices, historical OHLC, exchange feeds, NFT, and on-chain DEX data come back, billed per call. The shape of the call matches Hermes Agent's skill contract — declare it once, then forget it."
+      - "Hermes Agent"
+      - "crypto data,"
+    highlight: "on demand."
+  lead: "Drop CoinGecko via Locus into Hermes Agent as a crypto market-data skill. Token symbols, contract addresses, or research prompts go in; live prices, historical OHLC, exchange feeds, NFT, and on-chain DEX data come back. Each call is budget-aware and paid per request, so no CoinGecko subscription or API key lives inside the flow."
   meta:
     - "Hermes-native skill — one POST"
     - "3M+ tokens, 12y of historical data"
@@ -108,6 +108,8 @@ faq:
       answer: "Yes. Per-key rate limits apply with concurrency-fair queueing — a noisy flow never starves another flow on the same key. Practical limits scale with the underlying CoinGecko Pro infrastructure."
     - question: "How is this different from giving Hermes a CoinGecko Pro subscription?"
       answer: "Subscriptions don't fit Hermes Agent's skill model. The skill can't report a true per-call cost, so Hermes can't do real budget planning. The gateway reports an honest per-call cost up front, which is what Hermes was designed to consume."
+    - question: "Can Hermes Agent use this for crypto trading or research?"
+      answer: "Yes. Hermes can call the skill for live prices, historical OHLC, token metadata, exchange context, NFT data, or on-chain DEX feeds, then combine the result with its own research, alerts, or portfolio-summary workflow."
     - question: "Is the data the same as CoinGecko Pro?"
       answer: "Yes. The gateway proxies CoinGecko's Pro API directly, so coverage, freshness, and field shape match exactly."
 footer:

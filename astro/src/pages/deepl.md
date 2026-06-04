@@ -1,11 +1,11 @@
 ---
 layout: ../layouts/UseCasePage.astro
-title: "DeepL API · Pay Per Call, Pro-Tier Translation"
-description: "Translate between 30+ languages with DeepL Pro–grade quality, billed per call. No monthly subscription, no prepaid character blocks, no API key. Built for AI agents and developers."
+title: "DeepL API Pricing Alternative · Pay Per Call Translation"
+description: "Use DeepL API translation and DeepL Write per call instead of a monthly API Pro floor. Compare the pay-per-call option for agents, apps, and localization workflows."
 bodyClass: "page-deepl"
 themeColor: "#0b0b0c"
-ogTitle: "DeepL API — Pay Per Call, No Subscription"
-ogDescription: "DeepL Pro translation quality across 30+ languages, billed per request. MCP + x402 native, no monthly plan, no API key."
+ogTitle: "DeepL API Pricing Alternative — Pay Per Call Translation"
+ogDescription: "DeepL API translation and writing polish billed per request, with no monthly plan, prepaid block, or long-lived API key."
 schema:
   name: "DeepL via Locus"
   description: "Pay-per-call gateway to DeepL's professional translation and DeepL Write APIs. 30+ languages with formality, glossary, and document mode."
@@ -14,13 +14,13 @@ schema:
   providerName: "Locus"
 hero:
   ghostNumber: "30+"
-  eyebrow: "Pay-per-call · DeepL Pro quality · No subscription"
+  eyebrow: "DeepL API pricing alternative · Pay-per-call · No subscription"
   title:
     lines:
-      - "Translate"
-      - "anything,"
+      - "DeepL API"
+      - "pricing,"
     highlight: "per call."
-  lead: "DeepL via Locus is a pay-per-call gateway to DeepL's professional translation engine — the same model that consistently outperforms Google Translate on European-language pairs. Translate text or whole documents across 30+ languages, with formality control, glossary support, and DeepL Write rephrasing. No $5.49/month plan, no prepaid character blocks, no API key."
+  lead: "DeepL via Locus is a pay-per-call alternative for DeepL API translation and DeepL Write. Translate text or documents across 30+ languages with formality control, glossary support, and rephrasing — without a $5.49/month API Pro floor, prepaid character blocks, or a long-lived API key in agent logs."
   meta:
     - "30+ languages, DeepL Pro quality"
     - "Formality control + glossary support"
@@ -104,8 +104,10 @@ faq:
       answer: "Text translation across 30+ languages, formality control (formal/informal register, supported on a subset of languages including German, French, Spanish, Japanese), glossary support for brand terms, and document translation that preserves Word, PDF, PowerPoint, and HTML formatting. DeepL Write rephrasing endpoints are exposed too."
     - question: "Do I need a DeepL account or API key?"
       answer: "No. Authentication is per-request via x402. Connect a wallet, sign the request, get the translation back. No signup form, no key to rotate, no shared secret in agent logs."
-    - question: "How does this compare to DeepL API Pro direct?"
-      answer: "DeepL API Pro requires a $5.49/month subscription floor plus per-character billing with prepaid blocks. The gateway charges per call instead, which fits better for light or experimental usage, for SaaS embedding where translation volume is variable, and for autonomous agents that need translation as a tool call without a billing-entity-owned API key."
+    - question: "How does this compare to DeepL API Pro pricing?"
+      answer: "DeepL API Pro requires a $5.49/month subscription floor plus per-character billing. The gateway charges per call instead, which fits better for light or experimental usage, for SaaS embedding where translation volume is variable, and for autonomous agents that need translation as a tool call without a billing-entity-owned API key."
+    - question: "Is there a DeepL API free tier?"
+      answer: "Use DeepL's own free tier when it fits your product and account model. This page is for teams and agents that want Pro-quality API access as an on-demand paid call instead of managing a DeepL account, API key, and monthly floor."
     - question: "Can autonomous AI agents use this?"
       answer: "Yes — that's a primary design point. The endpoint supports MCP discovery and x402 payment, so an autonomous agent can find it, call it, pay for it, and consume the result without a human creating an account."
     - question: "What about data privacy?"

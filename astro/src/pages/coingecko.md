@@ -1,11 +1,11 @@
 ---
 layout: ../layouts/UseCasePage.astro
-title: "CoinGecko API · Pay Per Call, Full Crypto Market Data"
-description: "Query CoinGecko's full crypto market data — prices, charts, exchanges, NFT, on-chain DEX — for 3M+ tokens. Billed per call. No subscription, no API key, no demo-tier rate limit."
+title: "CoinGecko API Pricing Alternative · Pay Per Call Crypto Data"
+description: "Query CoinGecko prices, token lookup, on-chain DEX data, and Pro market feeds per call. Built for AI agents and apps that do not want a monthly API plan."
 bodyClass: "page-coingecko"
 themeColor: "#0b0b0c"
-ogTitle: "CoinGecko API — Pay Per Call, No Subscription"
-ogDescription: "Full CoinGecko coverage — 3M+ tokens, prices, charts, exchanges, NFT, on-chain DEX — billed per request. Built for AI agents and developers."
+ogTitle: "CoinGecko API Pricing Alternative — Pay Per Call Crypto Data"
+ogDescription: "CoinGecko prices, token lookup, charts, exchanges, NFT, and on-chain DEX feeds billed per request for agents and developers."
 schema:
   name: "CoinGecko via Locus"
   description: "Pay-per-call gateway to CoinGecko's full crypto market data API. Real-time and historical prices, charts, exchange data, NFT, and on-chain DEX feeds."
@@ -14,13 +14,13 @@ schema:
   providerName: "Locus"
 hero:
   ghostNumber: "3M+"
-  eyebrow: "Pay-per-call · Full CoinGecko coverage · No subscription"
+  eyebrow: "CoinGecko API pricing alternative · Token prices · On-chain DEX data"
   title:
     lines:
-      - "Every token,"
-      - "every chart,"
-    highlight: "one call."
-  lead: "CoinGecko via Locus is a pay-per-call gateway to CoinGecko's full crypto market data — real-time and historical prices, market cap, exchanges, NFT floors, on-chain DEX feeds, and trending coins for 3M+ digital assets. Send a request, get the data, walk away. No $129–$499/month plan, no API key, no demo-tier rate cliff."
+      - "CoinGecko data,"
+      - "priced"
+    highlight: "per call."
+  lead: "CoinGecko via Locus is a pay-per-call gateway to CoinGecko market data — live prices, token lookup, historical charts, exchange data, NFT floors, on-chain DEX feeds, and trending coins for 3M+ digital assets. Send a request, get the data, and avoid a $129–$499/month plan while you validate demand."
   meta:
     - "3M+ tokens, 12y of historical data"
     - "Prices · charts · exchanges · NFT · DEX"
@@ -104,8 +104,10 @@ faq:
       answer: "No. The gateway proxies CoinGecko's Pro endpoints, so the data quality, coverage, and freshness match exactly. The only difference is the access shape: per-call billing instead of monthly tiers."
     - question: "Do I need a CoinGecko account or API key?"
       answer: "No. Authentication is per-request via x402. Connect a wallet, sign the request, get the data. No signup form, no key to rotate, no shared secret in agent logs."
-    - question: "How does this compare to going direct on CoinGecko's plans?"
+    - question: "How does this compare to going direct on CoinGecko API pricing?"
       answer: "Direct CoinGecko plans run Demo (free, 30 RPM, 10K calls/month) → Analyst at $129/month → Pro at $499/month → Enterprise on contract. The gateway charges per call instead, which fits better when traffic is bursty, when you don't want to commit during a build-out, or when an autonomous agent needs to call without a billing-entity-owned API key."
+    - question: "Can I query CoinGecko on-chain DEX API data?"
+      answer: "Yes. The gateway exposes CoinGecko Pro coverage including token prices, token lookup, exchange data, NFT data, and on-chain DEX feeds, so agent and app workflows can request the specific market context they need."
     - question: "Can autonomous AI agents use this?"
       answer: "Yes — that's a primary design point. The endpoint supports MCP discovery and x402 payment, so an autonomous agent can find it, call it, pay for it, and consume the response without a human creating an account."
     - question: "What about rate limits?"

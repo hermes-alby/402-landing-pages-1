@@ -1,11 +1,11 @@
 ---
 layout: ../layouts/UseCasePage.astro
-title: "LinkedIn Profile Enrichment for Hermes Agent · Pay Per Query | PayPerQ"
-description: "Wire PayPerQ Contacts Enrich into Hermes Agent. Natural-language LinkedIn enrichment across 800M+ professionals, billed per verified profile. No subscription, no SDK."
+title: "Scout Profiles with Hermes Agent · LinkedIn Enrichment Skill"
+description: "Use Hermes Agent to scout profile descriptions, enrich LinkedIn profiles, and return verified contacts from a natural-language prompt. Pay per useful profile, no seat license."
 bodyClass: "page-linkedin"
 themeColor: "#0b0b0c"
-ogTitle: "LinkedIn Profile Enrichment for Hermes Agent — Pay Per Query"
-ogDescription: "Verified emails, GitHub, Scholar, full LinkedIn data inside your Hermes Agent flows. One skill, one endpoint, billed per verified profile."
+ogTitle: "Scout Profiles with Hermes Agent — LinkedIn Enrichment Skill"
+ogDescription: "Turn Hermes Agent prompts into ranked LinkedIn profile research with verified contact enrichment, per-flow budgets, and pay-per-query billing."
 schema:
   name: "PayPerQ LinkedIn Profile Enrichment for Hermes Agent"
   description: "Pay-per-query LinkedIn enrichment skill designed for Hermes Agent flows. Natural-language search across 800M+ professionals."
@@ -14,13 +14,13 @@ schema:
   providerName: "PayPerQ"
 hero:
   ghostNumber: "HERMES"
-  eyebrow: "Hermes Agent · Pay-per-query · No subscription"
+  eyebrow: "Hermes Agent scout profile research · Pay-per-query · No subscription"
   title:
     lines:
-      - "Hermes Agent,"
-      - "wired for"
-    highlight: "real contacts."
-  lead: "Drop PayPerQ Contacts Enrich into your Hermes Agent flow as a single skill. Natural-language prompts in, ranked verified LinkedIn profiles out, billed per hit. The shape of the call matches Hermes Agent's tool contract — declare it once, then forget it."
+      - "Scout profiles"
+      - "with"
+    highlight: "Hermes Agent."
+  lead: "Drop PayPerQ Contacts Enrich into Hermes Agent as a profile-scouting skill. Describe the people you need in natural language, get ranked LinkedIn profiles and verified contact context back, and keep every enrichment tied to a per-flow budget. No platform seat, no SDK, no persistent API key."
   meta:
     - "Hermes-native skill — one POST"
 
@@ -100,6 +100,8 @@ faq:
     - question: "How does this register as a Hermes Agent skill?"
       answer: "It's a single POST endpoint with a typed body. You register it in Hermes the same way you'd register any HTTP skill — endpoint, schema, price-per-hit. Hermes Agent uses the price to plan flow budgets and to show the user what each run will cost before it fires."
       open: true
+    - question: "Can Hermes Agent scout profile descriptions from a prompt?"
+      answer: "Yes. A Hermes flow can turn a profile description like 'RevOps leaders at seed-stage SaaS companies hiring SDRs' into a PayPerQ search, enrich the ranked LinkedIn profiles, then draft a sourced shortlist for human review."
     - question: "Does Hermes Agent need a long-lived API key?"
       answer: "No. PayPerQ accepts x402-signed requests, so Hermes can pay per call from a wallet you connect. There's no shared secret to leak in flow logs or rotate every quarter."
     - question: "What happens when a Hermes flow hits its budget cap?"
